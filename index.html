@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ольга Шахова — Корпоративный тренер, Наставник, Эксперт</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -319,33 +320,14 @@
         }
 
         @media (max-width: 992px) {
-            .hero-wrapper {
-                flex-direction: column;
-            }
-            .hero-image-side {
-                min-height: 450px;
-            }
-            .hero-image-side img {
-                object-position: 18% 30%;
-                transform: scale(1.2);
-            }
-            .hero-text-side {
-                padding: 40px 20px;
-                text-align: center;
-            }
-            .hero-name {
-                font-size: 2.5rem;
-            }
-            .hero-quote {
-                border-left: none;
-                border-top: 2px solid var(--accent-color);
-                padding-left: 0;
-                padding-top: 15px;
-            }
-            .reasons-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+    .hero-wrapper {
+        flex-direction: column; /* Картинка и текст встают друг под друга */
+    }
+    .hero-image-side {
+        min-height: 450px; /* Фото Ольги сохраняет хорошую высоту */
+    }
+}
+
     </style>
 </head>
 <body>
