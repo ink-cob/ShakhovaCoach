@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ольга Шахова — Корпоративный тренер, Наставник, Эксперт</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #2980b9;
+            --bg-light: #f8f9fa;
+            --bg-card: #ffffff;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-desc {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* 1. Главный экран с кадрированием Ольги */
+        .hero {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffffff;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-wrapper {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .hero-image-side {
+            flex: 1;
+            position: relative;
+            background-color: #eaeaea;
+            overflow: hidden;
+        }
+
+        .hero-image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 18% 45%;
+            transform: scale(1.15);
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .hero-text-side {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 80px;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafc 100%);
+        }
+
+        .hero-name {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .hero-quote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 20px;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Общие сетки */
+        .philosophy-grid, .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border-top: 5px solid var(--accent-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .card strong {
+            color: var(--primary-color);
+        }
+
+        .reasons {
+            background-color: #ffffff;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+        }
+
+        .reason-item {
+            padding: 25px;
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+        }
+
+        .reason-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .topic-block {
+            background-color: var(--bg-card);
+            padding: 35px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .topic-block h3 {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 10px;
+        }
+
+        .topic-list {
+            list-style: none;
+        }
+
+        .topic-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .topic-list li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2rem;
+        }
+
+        .formats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .format-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .format-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .reviews {
+            background-color: var(--bg-light);
+        }
+
+        .reviews-slider {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .review-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .contacts {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .contacts h2 {
+            color: #ffffff;
+        }
+
+        .contacts-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .contact-item a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .contact-item p {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .contacts-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            font-size: 1rem;
+            color: #ecf0f1;
+        }
+
+        @media (max-width: 992px) {
+            .hero-wrapper {
+                flex-direction: column;
+            }
+            .hero-image-side {
+                min-height: 450px;
+            }
+            .hero-image-side img {
+                object-position: 18% 30%;
+                transform: scale(1.2);
+            }
+            .hero-text-side {
+                padding: 40px 20px;
+                text-align: center;
+            }
+            .hero-name {
+                font-size: 2.5rem;
+            }
+            .hero-quote {
+                border-left: none;
+                border-top: 2px solid var(--accent-color);
+                padding-left: 0;
+                padding-top: 15px;
+            }
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Главный экран -->
+    <section class="hero">
+        <div class="hero-wrapper">
+            <div class="hero-image-side">
+                <img src="olga.png" alt="Ольга Шахова">
+
+            </div>
+            <div class="hero-text-side">
+                <h1 class="hero-name">Ольга Шахова</h1>
+                <p class="hero-title">Корпоративный тренер Soft & Hard Skills | Наставник | Эксперт по продажам и управлению</p>
+                <div class="hero-quote">
+                    «Глубокие знания. Проверенная практика. Системный подход. Соединяю искусство наставничества с контекстом ваших реальных задач».
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 2. Философия и принципы работы -->
+    <section>
+        <div class="container">
+            <h2>Философия и принципы работы</h2>
+            <p class="section-desc">Мой подход базируется на методологии непрерывного развития Lifelong Learning. Как наставник с профильным образованием и глубокой практикой, я не просто передаю инструменты, а развиваю у вас способность к метаобучению. Это «навык над навыками», усиление которого позволит вам быстро, системно и результативно прокачивать любые hard и soft skills.</p>
+            
+            <div class="philosophy-grid">
+                <div class="card">
+                    <div class="card-num">1</div>
+                    <h3>Осознанность мышления</h3>
+                    <p><strong>Что делаем:</strong> Развиваем способность к рефлексии и пониманию ваших когнитивных особенностей.</p>
+                    <p><strong>Результат:</strong> Вы четко видите свои «слепые зоны», понимаете, как именно ваш мозг обрабатывает информацию, и управляете своим развитием осознанно, а не хаотично.</p>
+                </div>
+                <div class="card">
+                    <div class="card-num">2</div>
+                    <h3>Саморегуляция</h3>
+                    <p><strong>Что делаем:</strong> Осваиваем навыки управления собственным процессом обучения.</p>
+                    <p><strong>Результат:</strong> Вы умеете разбивать сложные задачи на понятные шаги, экологично управлять когнитивной нагрузкой, сохранять психологическую устойчивость и самомотивацию в условиях изменений.</p>
+                </div>
+                <div class="card">
+                    <div class="card-num">3</div>
+                    <h3>Интеграция знаний</h3>
+                    <p><strong>Что делаем:</strong> Встраиваем новые паттерны и навыки напрямую в контекст ваших реальных рабочих задач.</p>
+                    <p><strong>Результат:</strong> Никакой «книжной теории». Вы учитесь извлекать практическую пользу, переносить эффективные паттерны из одной сферы в другую и безболезненно отказываться от старых, неработающих моделей поведения.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Как работает подход -->
+    <section style="background-color: #ffffff;">
+        <div class="container">
+            <h2>Как работает мой подход</h2>
+            <p class="section-desc">Результат компании — это сумма ежедневных действий ваших сотрудников. Но большинство людей заперты в рамках привычных автоматизмов и повторяют их из раза в раз, даже если они не приближают к цели. Соединив профильное образование и практическую базу, я разработала трехэтапную систему, которая выявляет эти автоматизмы, трансформирует их и гарантирует долгосрочный результат:</p>
+            
+            <div class="approach-grid">
+                <div class="card" style="border-top-color: #34495e;">
+                    <h3>Глубокий аудит</h3>
+                    <p>Я подсвечиваю скрытые привычки и деструктивные установки сотрудников, которые тормозят бизнес-процессы. Это выявляет истинные, а не мнимые точки роста команды.</p>
+                </div>
+                <div class="card" style="border-top-color: #34495e;">
+                    <h3>Адаптивная программа</h3>
+                    <p>Я выстраиваю трек развития максимально гибко и реалистично. Программа создается под актуальные задачи бизнеса, портрет команды и доступные ресурсы.</p>
+                </div>
+                <div class="card" style="border-top-color: #34495e;">
+                    <h3>Системный результат</h3>
+                    <p>Я передаю участникам инструменты метаобучения для непрерывного развития. Это усиливает команду и переводит бизнес-показатели на новый качественный уровень.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Главные причины доверить мне обучение -->
+    <section class="reasons">
+        <div class="container">
+            <h2>Главные причины доверить мне обучение команды</h2>
+            <div class="reasons-grid">
+                <div class="reason-item">
+                    <h3>Опыт в масштабах крупного бизнеса</h3>
+                    <p>Практика внутреннего бизнес-тренера в крупной федеральной B2B-компании с годовым оборотом более 2,5 млрд рублей. Понимаю процессы корпораций изнутри.</p>
+                </div>
+                <div class="reason-item">
+                    <h3>13 лет практики и путь личного роста</h3>
+                    <p>Прошла путь от мерчандайзера до руководителя отдела и профессионального наставника. 6 лет в управлении и 13 лет в продажах — знаю всю специфику рынка.</p>
+                </div>
+                <div class="reason-item">
+                    <h3>Профильное образование и методология</h3>
+                    <p>Высшее образование «Менеджмент», профессиональная переподготовка «Мастерство ведения тренинга», повышение квалификации «Наставничество в групповой и индивидуальной работе».</p>
+                </div>
+                <div class="reason-item">
+                    <h3>Создание сильных команд с нуля</h3>
+                    <p>Запускаю результативные отделы продаж: от системной настройки процессов до вывода каждого сотрудника на пик эффективности.</p>
+                </div>
+                <div class="reason-item">
+                    <h3>Фокус на человеке и его реальности</h3>
+                    <p>Экспертно управляю групповой динамикой и фасилитацией. Сочетаю глубокое индивидуальное сопровождение с бережной, поддерживающей подачей: простым языком о самом важном.</p>
+                </div>
+                <div class="reason-item">
+                    <h3>Признание лидеров рынка</h3>
+                    <p>Реальные отзывы HRD и CEO крупных компаний. Результаты выпускников — от специалистов отделов сопровождения до топ-менеджеров.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Корпоративные темы обучения -->
+    <section>
+        <div class="container">
+            <h2>Корпоративные темы обучения</h2>
+            <div class="topics-grid">
+                <div class="topic-block">
+                    <h3>I. Развитие Soft Skills</h3>
+                    <ul class="topic-list">
+                        <li>Управление личной эффективностью: формирование внутренней мотивации и ценности обучения.</li>
+                        <li>Проактивность в работе: переход от реактивного выполнения задач к инициативе.</li>
+                        <li>Тайм-менеджмент: построение индивидуальной системы планирования в условиях многозадачности.</li>
+                        <li>Деловые коммуникации: инструменты экологичного влияния и переговорные навыки.</li>
+                        <li>Стратегическое планирование: постановка, декомпозиция и прогнозирование целей.</li>
+                        <li>Эмоциональная устойчивость: управление стрессом, профилактика выгорания и развитие профессиональной уверенности.</li>
+                        <li>AI-интеграция: эффективная работа с нейросетями для кратного повышения личной продуктивности.</li>
+                    </ul>
+                </div>
+                <div class="topic-block">
+                    <h3>II. Команда и лидерство</h3>
+                    <ul class="topic-list">
+                        <li>Системное делегирование: матрица постановки задач и сквозной контроль исполнения.</li>
+                        <li>Управление мотивацией: разработка KPI и нематериальные триггеры вовлеченности.</li>
+                        <li>Командное целеполагание: планирование, декомпозиция и прогнозирование KPI подразделения.</li>
+                        <li>Система менторинга: качественный подбор, бесшовная адаптация и наставничество сотрудников внутри команды.</li>
+                        <li>Культура синхронизации: эффективные летучки, встречи 1-на-1 и фасилитация по принципам коучинга.</li>
+                        <li>Групповая динамика: модерация стратегических сессий, брейнштормов и мастер-майндов.</li>
+                        <li>Управление изменениями: лидерские компетенции при трансформации бизнес-процессов.</li>
+                    </ul>
+                </div>
+                <div class="topic-block">
+                    <h3>III. Hard Skills в продажах</h3>
+                    <ul class="topic-list">
+                        <li>Аналитика рынка: сегментация целевой аудитории и оценка потенциала клиента.</li>
+                        <li>Управление воронкой: от установки контакта и квалификации потребностей до согласования условий.</li>
+                        <li>Эффективный оффер: разработка кастомизированных КП и системная работа с возражениями.</li>
+                        <li>Анализ и оптимизация: метрики конверсии воронки и инструменты ее расширения.</li>
+                        <li>Key Account Management: стратегии развития и удержания ключевых клиентов.</li>
+                        <li>Психология переговоров: управление диалогом, системная подготовка и пост-анализ встреч.</li>
+                        <li>Самообучающаяся команда продаж: инструменты метаобучения и механики передачи лучших практик внутри отдела.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 6. Форматы корпоративной работы -->
+    <section style="background-color: #ffffff;">
+        <div class="container">
+            <h2>Форматы корпоративной работы</h2>
+            <div class="formats-grid">
+                <div class="format-card">
+                    <h3>Живые и онлайн-тренинги</h3>
+                    <p>Я провожу практические симуляции на основе реальных кейсов ваших сотрудников. Каждый участник получает индивидуальное сопровождение и развивающую обратную связь.</p>
+                </div>
+                <div class="format-card">
+                    <h3>Мастер-майнды и мозговые штурмы</h3>
+                    <p>Я модерирую интенсивные сессии под конкретный запрос бизнеса. Результат — детальный разбор актуальных задач и готовый план внедрения решений.</p>
+                </div>
+                <div class="format-card">
+                    <h3>Практикумы межличностного взаимодействия</h3>
+                    <p>Я организую отработку живых сценариев: переговоры с клиентами, встречи «руководитель — сотрудник» 1-на-1 и фасилитацию групповых собраний.</p>
+                </div>
+                <div class="format-card">
+                    <h3>HR-инструменты и методология</h3>
+                    <p>Я разрабатываю матрицы компетенций, провожу оценку (метод 360, интервью) и создаю под ключ базу знаний и наполнение СДО: планы адаптации, курсы, тесты.</p>
+                </div>
+                <div class="format-card">
+                    <h3>Сопровождение и аудит</h3>
+                    <p>Я осуществляю стартовую и итоговую аттестацию команды, оцениваю динамику навыков и мотивации на этапе посттренингового сопровождения.</p>
+                </div>
+                <div class="format-card">
+                    <h3>Внедрение изменений и узкопрофильное обучение</h3>
+                    <p>Я настраиваю ритм менеджмента, эффективные планерки и интеграцию CRM. Создаю уникальный обучающий контент по специфике вашего бизнеса: от презентаций до видеоуроков.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7-8. Отзывы участников -->
+    <section class="reviews">
+        <div class="container">
+            <h2>Отзывы руководителей и менеджеров</h2>
+            <p class="section-desc">Реальные результаты участников — лучшее подтверждение эффективности программ.</p>
+            <div class="reviews-slider">
+                <div class="review-card">
+                    <p class="review-text">«Использую регулярно инструменты, полученные в ходе курса, это позволяет более эффективно управлять рабочим временем, эффективно и с практической пользой проводить собрания и встречи, быстрее принимать решения. Считаю, справились на отлично!»</p>
+                    <p class="review-author">Генеральный директор</p>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">«Появилось системное делегирование. Сместился фокус с "Как сделать?" на "Какой результат?". Менеджеры стали чаще приносить решения, а не вопросы. Меньше стало операционки».</p>
+                    <p class="review-author">Руководитель отдела продаж</p>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">«Применять начал инструменты эффективной коммуникации и донесения ценности. Результатом были хорошие переговоры с двумя производителями в проблемных точках. Рекомендую курс».</p>
+                    <p class="review-author">Руководитель технического отдела</p>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">«Я начала планировать свои дела, составлять расписание дел, стала более собрана и компетентна в переговорах с клиентами. Практика с реальными кейсами - супер! Оля, ты крутая! спасибо, что вникла в боли сотрудников».</p>
+                    <p class="review-author">Менеджер активных продаж</p>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">«Я стал качественнее готовиться ко встречам и больше анализировать их. Каждый специалист на своей позиции извлечет что-то полезное из курса. Оля крутой спикер, который может найти решение любой проблемы».</p>
+                    <p class="review-author">Менеджер активных продаж</p>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">«У меня появилось больше порядка в рабочих процессах и меньше стресса. Данный курс нужен всем, даже не только в продажах. Так как там можно для себя многое почерпнуть и узнать новое как для работы, так и для жизни».</p>
+                    <p class="review-author">Менеджер отдела сопровождения</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Контакты и подвал -->
+    <section class="contacts">
+        <div class="container">
+            <h2>Свяжитесь со мной</h2>
+            <p style="color: #ecf0f1; margin-bottom: 30px; font-size: 1.1rem;">Готова обсудить задачи вашей команды и предложить оптимальный формат сотрудничества.</p>
+            
+            <div class="contacts-grid">
+                <div class="contact-item">
+                    <p>📧 Email</p>
+                    <a href="mailto:reason_project@mail.ru">reason_project@mail.ru</a>
+                </div>
+                <div class="contact-item">
+                    <p>📞 Телефон</p>
+                    <a href="tel:89633481390">8 963 348 13 90</a>
+                </div>
+                <div class="contact-item">
+                    <p>📍 Город</p>
+                    <span style="font-size: 1.3rem; font-weight: 600; display: block; margin-top: 5px;">Санкт-Петербург</span>
+                </div>
+            </div>
+
+            <div class="contacts-footer">
+                Ольга Шахова — корпоративный тренер, наставник и эксперт по продажам и управлению. Развитие личной эффективности для командного результата.
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
