@@ -2,9 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ольга Шахова — Корпоративный тренер, Наставник, Эксперт</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ольга Шахова — Корпоративный тренер, Наставник</title>
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -13,153 +12,150 @@
             --bg-card: #ffffff;
             --text-dark: #333333;
             --text-muted: #666666;
-            --border-radius: 8px;
+            --border-radius: 12px;
+            /* Одинаковые аккуратные отступы по бокам для центрирования на смартфонах */
+            --mobile-padding: 16px; 
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
             color: var(--text-dark);
             background-color: var(--bg-light);
+            font-size: 14px; /* Уменьшенный базовый текст для аккуратности на телефонах */
         }
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            padding: 0 var(--mobile-padding);
             margin: 0 auto;
-            padding: 0 20px;
         }
 
         section {
-            padding: 80px 0;
+            padding: 45px 0; /* Компактные вертикальные интервалы */
         }
 
         h2 {
-            font-size: 2.5rem;
+            font-size: 1.6rem; /* Оптимальный уменьшенный размер заголовков */
             color: var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             text-align: center;
+            line-height: 1.3;
+            font-weight: 700;
         }
 
         .section-desc {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            font-size: 1.1rem;
+            margin: 0 auto 25px auto;
+            font-size: 0.9rem; /* Уменьшенный текст описания */
             color: var(--text-muted);
+            line-height: 1.4;
         }
-
-        /* 1. Главный экран с кадрированием Ольги */
+        /* 1. Главный экран под мобильные */
         .hero {
-            display: flex;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #ffffff;
             padding: 0;
-            position: relative;
-            overflow: hidden;
+            background-color: #ffffff;
         }
 
         .hero-wrapper {
             display: flex;
+            flex-direction: column; 
             width: 100%;
-            min-height: 100vh;
         }
 
         .hero-image-side {
-            flex: 1;
+            width: 100%;
+            height: 420px; /* Увеличенная высота, чтобы трапеция смотрелась эффектно */
             position: relative;
-            background-color: #eaeaea;
             overflow: hidden;
+            background-color: #eaeaea;
+            /* Эффект прямоугольной трапеции: скос идет снизу вверх справа налево, 
+               оставляя тупой угол справа от Ольги (примерно на 70% ширины экрана) */
+            clip-path: polygon(0 0, 100% 0, 100% 82%, 70% 100%, 0 100%);
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 82%, 70% 100%, 0 100%);
         }
 
         .hero-image-side img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: 18% 45%;
-            transform: scale(1.15);
+            /* Фокусировка исключительно на Ольге */
+            object-position: 15% 30%; 
+            transform: scale(1.3);
             display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
         }
 
         .hero-text-side {
-            flex: 1.2;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 60px 80px;
-            background: linear-gradient(135deg, #ffffff 0%, #f9fafc 100%);
+            width: 100%;
+            padding: 25px var(--mobile-padding) 35px var(--mobile-padding);
+            text-align: center; /* Центрирование главного текста */
+            background: #ffffff;
         }
 
         .hero-name {
-            font-size: 3.5rem;
+            font-size: 2rem;
             color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 8px;
             font-weight: 700;
         }
 
         .hero-title {
-            font-size: 1.5rem;
+            font-size: 1.1rem; /* Уменьшенный размер, чтобы не перегружать экран */
             color: var(--accent-color);
-            margin-bottom: 30px;
-            line-height: 1.4;
+            margin-bottom: 20px;
+            line-height: 1.35;
             font-weight: 500;
         }
 
         .hero-quote {
-            border-left: 4px solid var(--accent-color);
-            padding-left: 20px;
+            border-top: 2px solid var(--accent-color);
+            padding-top: 15px;
             font-style: italic;
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        /* Общие сетки */
-        .philosophy-grid, .approach-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+        /* Общие мобильные сетки для симметрии */
+        .philosophy-grid, .approach-grid, .reasons-grid, .topics-grid, .formats-grid, .reviews-slider {
+            display: flex;
+            flex-direction: column;
+            gap: 16px; 
+            width: 100%;
         }
 
         .card {
             background-color: var(--bg-card);
-            padding: 40px 30px;
+            padding: 22px 18px;
             border-radius: var(--border-radius);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            border-top: 5px solid var(--accent-color);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-top: 4px solid var(--accent-color);
         }
 
         .card-num {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--accent-color);
-            margin-bottom: 15px;
+            margin-bottom: 6px;
         }
 
         .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-size: 1.15rem;
+            margin-bottom: 6px;
             color: var(--primary-color);
         }
 
         .card p {
-            margin-bottom: 10px;
-            font-size: 0.95rem;
+            font-size: 0.85rem; /* Уменьшенный аккуратный текст в карточках */
+            margin-bottom: 6px;
+            color: #444;
         }
 
         .card strong {
@@ -170,43 +166,36 @@
             background-color: #ffffff;
         }
 
-        .reasons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 30px;
-        }
-
         .reason-item {
-            padding: 25px;
+            padding: 20px 16px;
             background-color: var(--bg-light);
             border-radius: var(--border-radius);
         }
 
         .reason-item h3 {
             color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 1.25rem;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
         }
 
-        .topics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
+        .reason-item p {
+            font-size: 0.85rem;
+            color: #555;
         }
 
         .topic-block {
             background-color: var(--bg-card);
-            padding: 35px;
+            padding: 25px 18px;
             border-radius: var(--border-radius);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
         .topic-block h3 {
             color: var(--accent-color);
-            font-size: 1.4rem;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
             border-bottom: 2px solid var(--bg-light);
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
 
         .topic-list {
@@ -215,9 +204,10 @@
 
         .topic-list li {
             position: relative;
-            padding-left: 20px;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
+            padding-left: 18px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
 
         .topic-list li::before {
@@ -226,58 +216,51 @@
             font-weight: bold;
             position: absolute;
             left: 0;
-            top: 0;
-            font-size: 1.2rem;
-        }
-
-        .formats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
+            top: -1px;
+            font-size: 1.1rem;
         }
 
         .format-card {
             background-color: #ffffff;
-            padding: 30px;
+            padding: 22px 18px;
             border-radius: var(--border-radius);
             border-left: 4px solid var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
 
         .format-card h3 {
-            margin-bottom: 10px;
+            margin-bottom: 6px;
+            font-size: 1.15rem;
             color: var(--primary-color);
+        }
+
+        .format-card p {
+            font-size: 0.85rem;
+            color: #555;
         }
 
         .reviews {
             background-color: var(--bg-light);
         }
 
-        .reviews-slider {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
         .review-card {
             background-color: var(--bg-card);
-            padding: 30px;
+            padding: 22px 18px;
             border-radius: var(--border-radius);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
         }
 
         .review-text {
             font-style: italic;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            line-height: 1.45;
         }
 
         .review-author {
             font-weight: 600;
             color: var(--primary-color);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .contacts {
@@ -292,52 +275,63 @@
 
         .contacts-grid {
             display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-            margin: 40px 0;
+            flex-direction: column;
+            gap: 24px;
+            margin: 30px 0;
         }
 
         .contact-item a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             font-weight: 600;
         }
 
         .contact-item p {
             color: #bdc3c7;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
+            font-size: 0.8rem;
+            margin-bottom: 3px;
         }
 
         .contacts-footer {
-            margin-top: 40px;
+            margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid #34495e;
-            font-size: 1rem;
+            font-size: 0.85rem;
             color: #ecf0f1;
+            line-height: 1.4;
         }
 
-        @media (max-width: 992px) {
-    .hero-wrapper {
-        flex-direction: column; /* Картинка и текст встают друг под друга */
-    }
-    .hero-image-side {
-        min-height: 450px; /* Фото Ольги сохраняет хорошую высоту */
-    }
-}
-
+        /* Поддержка больших экранов на случай заходов с ПК */
+        @media (min-width: 768px) {
+            body { font-size: 15px; }
+            .philosophy-grid, .approach-grid, .reviews-slider { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+            .reasons-grid, .formats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
+            .topics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+            h2 { font-size: 2.2rem; }
+            .section-desc { font-size: 1rem; }
+            .card p, .reason-item p, .topic-list li, .format-card p, .review-text { font-size: 0.95rem; }
+            .card h3, .reason-item h3, .topic-block h3, .format-card h3 { font-size: 1.3rem; }
+        }
+        @media (min-width: 992px) {
+            .hero-wrapper { flex-direction: row; min-height: 85vh; }
+            .hero-image-side { flex: 1; height: auto; min-height: 650px; clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%); -webkit-clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%); }
+            .hero-image-side img { object-position: 18% 45%; transform: scale(1.15); }
+            .hero-text-side { flex: 1.2; text-align: left; padding: 60px 80px; justify-content: center; display: flex; flex-direction: column; }
+            .hero-name { font-size: 3rem; }
+            .hero-title { font-size: 1.4rem; }
+            .hero-quote { border-top: none; border-left: 4px solid var(--accent-color); padding-top: 0; padding-left: 20px; font-size: 1.05rem; }
+            .container { max-width: 1200px; padding: 0 20px; }
+        }
     </style>
 </head>
 <body>
-
     <!-- 1. Главный экран -->
     <section class="hero">
         <div class="hero-wrapper">
             <div class="hero-image-side">
-                <img src="olga.png" alt="Ольга Шахова">
-
+                <!-- Кадрирование на Ольгу с фигурной трапецией на мобильных -->
+                <img src="image_0WdHJj.png" alt="Ольга Шахова">
             </div>
             <div class="hero-text-side">
                 <h1 class="hero-name">Ольга Шахова</h1>
@@ -348,6 +342,7 @@
             </div>
         </div>
     </section>
+
     <!-- 2. Философия и принципы работы -->
     <section>
         <div class="container">
@@ -376,7 +371,6 @@
             </div>
         </div>
     </section>
-
     <!-- 3. Как работает подход -->
     <section style="background-color: #ffffff;">
         <div class="container">
@@ -432,7 +426,6 @@
             </div>
         </div>
     </section>
-
     <!-- 5. Корпоративные темы обучения -->
     <section>
         <div class="container">
@@ -543,7 +536,6 @@
             </div>
         </div>
     </section>
-
     <!-- 9. Контакты и подвал -->
     <section class="contacts">
         <div class="container">
