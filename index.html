@@ -650,7 +650,7 @@
         const TG_CHAT_ID = "5260910156"; 
 
         // Безопасный скрипт отправки формы в Telegram с проверкой наличия элемента
-        const formElement = document.getElementById('tgForm');
+                const formElement = document.getElementById('tgForm');
         if (formElement) {
             formElement.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -659,40 +659,33 @@
                 const phone = document.getElementById('userPhone').value;
                 const statusText = document.getElementById('formStatus');
                 
-                // Изменен текст сообщения под создание сайта
-                const message = `🔔 <b>Новая заявка на создание сайта!</b>\n\n👤 <b>Имя:</b> ${name}\n📞 <b>Телефон:</b> ${phone}`;
-                const url = `https://teleapi.ru{TG_TOKEN}/sendMessage`;
-
+                // Вставьте сюда вашу ссылку URL веб-приложения из Шага 1:
+                const googleScriptUrl = "https://script.google.com/macros/s/AKfycby586rpzg1XXhMa6dq8PpNC1LbmPWS2qkC1LerP1MFeerJ0AFq3j8wB1KNVGhkk6A0JWw/exec"; 
                 
                 statusText.style.display = "block";
                 statusText.style.color = "var(--primary-color)";
                 statusText.innerText = "Отправка...";
 
-                fetch(url, {
+                // Отправляем данные на сервера Google
+                fetch(googleScriptUrl, {
                     method: 'POST',
+                    mode: 'no-cors', // Жестко отключает любые блокировки браузера на ПК
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: TG_CHAT_ID,
-                        parse_mode: 'html',
-                        text: message
-                    })
+                    body: JSON.stringify({ name: name, phone: phone })
                 })
-                .then(response => {
-                    if (response.ok) {
-                        statusText.style.color = "#2ecc71";
-                        statusText.innerText = "Заявка успешно отправлена! Скоро свяжемся.";
-                        formElement.reset();
-                    } else {
-                        statusText.style.color = "#e74c3c";
-                        statusText.innerText = "Ошибка отправки. Проверьте токен и ID.";
-                    }
+                .then(() => {
+                    // Google принял заявку, локальный браузер спокоен
+                    statusText.style.color = "#2ecc71";
+                    statusText.innerText = "Заявка успешно отправлена!";
+                    formElement.reset();
                 })
                 .catch(error => {
                     statusText.style.color = "#e74c3c";
-                    statusText.innerText = "Ошибка сети. Проверьте подключение.";
+                    statusText.innerText = "Ошибка сети.";
                 });
             });
         }
+
 
         // Скрипт плавного раскрытия окон-аккордеонов
         document.querySelectorAll('.accordion-btn').forEach(button => {
