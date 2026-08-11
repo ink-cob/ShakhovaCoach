@@ -579,6 +579,7 @@
                 </div>
             </div>
             <!-- ОКНО 5: Связь со мной -->
+                        <!-- ОКНО 5: Связь со мной -->
             <div class="accordion-item">
                 <button class="accordion-btn">Связь со мной</button>
                 <div class="accordion-content">
@@ -586,7 +587,6 @@
                         <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-bottom: 4px;">Выберите удобный канал для прямой связи:</p>
                         
                         <div class="contact-buttons">
-                            <!-- Жидкие кнопки связи: голубые с темной рамкой во всю ширину -->
                             <a href="https://t.me" class="btn-link" target="_blank">
                                 Мой телеграмм
                             </a>
@@ -603,91 +603,107 @@
                 </div>
             </div>
 
-        </div>
-<!-- ОКНО 6: Заявка на создание сайта -->
-                        <!-- ОКНО 6: Заявка на создание сайта -->
+            <!-- ОКНО 6: Подать заявку (Полностью автономное разделение без TG) -->
             <div class="accordion-item">
-                <button class="accordion-btn">Заявка на создание сайта</button>
+                <button class="accordion-btn">Подать заявку</button>
                 <div class="accordion-content">
                     <div class="accordion-inner">
-                        <!-- Сервис FormSubmit отправляет данные на вашу почту без ошибок сети -->
-                        <form class="lead-form" action="https://formsubmit.co" method="POST">
-                            
-                            <!-- Отключает страницу капчи, чтобы заявка уходила мгновенно -->
-                            <input type="hidden" name="_captcha" value="false">
-                            <!-- Страница, куда вернется пользователь после отправки -->
-                            <input type="hidden" name="_next" value="https://github.io"> 
+                        <form class="lead-form" id="localLeadForm">
                             
                             <div class="form-group">
-                                <label>Ваше имя</label>
-                                <input type="text" name="Имя" class="form-input" placeholder="Иван" required>
+                                <label>Цель обращения</label>
+                                <div style="display: flex; gap: 10px; width: 100%; margin-top: 4px;">
+                                    <input type="radio" id="typeCollab" name="request_type" value="collab" checked style="display:none;">
+                                    <label for="typeCollab" id="labelCollab" style="flex:1; text-align:center; padding: 12px; border-radius: 8px; border: 2px solid var(--accent-color); background: #e6f0fa; color: var(--primary-color); font-weight:600; cursor:pointer; font-size:0.9rem;">
+                                        Сотрудничество
+                                    </label>
+
+                                    <input type="radio" id="typeSite" name="request_type" value="site" style="display:none;">
+                                    <label for="typeSite" id="labelSite" style="flex:1; text-align:center; padding: 12px; border-radius: 8px; border: 1px solid #d1dbdf; background: #fcfdfe; color: var(--text-dark); font-weight:600; cursor:pointer; font-size:0.9rem;">
+                                        Создание сайта
+                                    </label>
+                                </div>
                             </div>
+
                             <div class="form-group">
-                                <label>Номер телефона</label>
-                                <input type="tel" name="Телефон" class="form-input" placeholder="+7 (999) 000-00-00" required>
+                                <label for="userName">Ваше имя</label>
+                                <input type="text" id="userName" class="form-input" placeholder="Иван" required>
                             </div>
+
+                            <div class="form-group">
+                                <label for="userPhone">Номер телефона</label>
+                                <input type="tel" id="userPhone" class="form-input" placeholder="+7 (999) 000-00-00" required>
+                            </div>
+
                             <button type="submit" class="btn-submit">Отправить заявку</button>
+                            <div id="formStatus" class="form-status"></div>
                         </form>
                     </div>
                 </div>
             </div>
 
-
         </div>
-        <!-- Дословный приподнятый копирайт и подпись создателей Ink© из PDF-файла -->
+
+        <!-- Подтянут вверх и сплошной текст копирайта -->
         <footer class="contacts-footer">
-           <b> Ольга Шахова </b> — корпоративный тренер, наставник и эксперт. Развитие личной эффективности для командного результата. © 2026
+            Ольга Шахова — корпоративный тренер, наставник и эксперт. Развитие личной эффективности для командного результата. © 2026
             <div style="margin-top: 8px; font-size: 0.75rem; opacity: 0.8;">
-                Сайт разработан <b> сообществом Ink© </b> <br> Оставить заявку можно в пункте выше  <br>
+                Сайт разработан сообществом Ink© <br>
+                Почта для связи: Maximdshahov@gmail.com
             </div>
         </footer>
     </main>
 
-           <!-- Скрипты плавного раскрытия окон и отправки в Телеграм -->
     <script>
-        // ВНИМАНИЕ: Обязательно укажите здесь данные вашего бота
-        const TG_TOKEN = "8832357705:AAGz8AzDNJ6w_GABN41kBURXtoZcgbTIMSA"; 
-        const TG_CHAT_ID = "5260910156"; 
+        const radCollab = document.getElementById('typeCollab');
+        const radSite = document.getElementById('typeSite');
+        const lblCollab = document.getElementById('labelCollab');
+        const lblSite = document.getElementById('labelSite');
 
-        // Безопасный скрипт отправки формы в Telegram с проверкой наличия элемента
-                const formElement = document.getElementById('tgForm');
+        if (radCollab && radSite) {
+            radCollab.addEventListener('change', () => {
+                lblCollab.style.background = "#e6f0fa"; lblCollab.style.borderColor = "var(--accent-color)"; lblCollab.style.color = "var(--primary-color)";
+                lblSite.style.background = "#fcfdfe"; lblSite.style.borderColor = "#d1dbdf"; lblSite.style.color = "var(--text-dark)";
+            });
+            radSite.addEventListener('change', () => {
+                lblSite.style.background = "#e6f0fa"; lblSite.style.borderColor = "var(--accent-color)"; lblSite.style.color = "var(--primary-color)";
+                lblCollab.style.background = "#fcfdfe"; lblCollab.style.borderColor = "#d1dbdf"; lblCollab.style.color = "var(--text-dark)";
+            });
+        }
+
+        const formElement = document.getElementById('localLeadForm');
         if (formElement) {
             formElement.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
                 const name = document.getElementById('userName').value;
                 const phone = document.getElementById('userPhone').value;
+                const type = document.querySelector('input[name="request_type"]:checked').value;
                 const statusText = document.getElementById('formStatus');
                 
-                // Вставьте сюда вашу ссылку URL веб-приложения из Шага 1:
-                const googleScriptUrl = "https://script.google.com/macros/s/AKfycby586rpzg1XXhMa6dq8PpNC1LbmPWS2qkC1LerP1MFeerJ0AFq3j8wB1KNVGhkk6A0JWw/exec"; 
-                
-                statusText.style.display = "block";
-                statusText.style.color = "var(--primary-color)";
-                statusText.innerText = "Отправка...";
+                const now = new Date();
+                const dateString = now.toLocaleDateString('ru-RU') + ' ' + now.toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'});
 
-                // Отправляем данные на сервера Google
-                fetch(googleScriptUrl, {
-                    method: 'POST',
-                    mode: 'no-cors', // Жестко отключает любые блокировки браузера на ПК
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name: name, phone: phone })
-                })
-                .then(() => {
-                    // Google принял заявку, локальный браузер спокоен
-                    statusText.style.color = "#2ecc71";
-                    statusText.innerText = "Заявка успешно отправлена!";
-                    formElement.reset();
-                })
-                .catch(error => {
-                    statusText.style.color = "#e74c3c";
-                    statusText.innerText = "Ошибка сети.";
-                });
+                const newLead = {
+                    name: name,
+                    phone: phone,
+                    type: type,
+                    date: dateString
+                };
+
+                let currentLeads = JSON.parse(localStorage.getItem('olga_leads')) || [];
+                currentLeads.push(newLead);
+                localStorage.setItem('olga_leads', JSON.stringify(currentLeads));
+
+                statusText.style.display = "block";
+                statusText.style.color = "#2ecc71";
+                statusText.innerText = "Заявка успешно принята! Спасибо.";
+                
+                formElement.reset();
+                if (lblCollab) lblCollab.click();
             });
         }
 
-
-        // Скрипт плавного раскрытия окон-аккордеонов
         document.querySelectorAll('.accordion-btn').forEach(button => {
             button.addEventListener('click', () => {
                 const accordionItem = button.parentElement;
@@ -705,3 +721,4 @@
     </script>
 </body>
 </html>
+
