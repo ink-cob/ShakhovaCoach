@@ -6,314 +6,147 @@
     <title>Ольга Шахова — Корпоративный тренер, Наставник</title>
     <style>
         :root {
-            --primary-color: #1e3a5f; /* Темно-синий для красивых рамок и текста */
-            --accent-color: #3a86c8;  /* Мягкий голубой для акцентов */
-            --bg-light: #f0f4f8;      /* Светлый фон сайта */
-            --bg-card: #ffffff;       
+            --primary-color: #1e3a5f;
+            --accent-color: #3a86c8;
+            --bg-light: #f0f4f8;
+            --bg-card: #ffffff;
             --text-dark: #2c3e50;
             --text-muted: #7f8c8d;
             --border-radius: 14px;
-            --mobile-padding: 16px; 
+            --green: #2e9e5b;
+            --yellow: #e6b800;
+            --red: #d64545;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.5;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-            font-size: 14px;
-            width: 100%;
-            overflow-x: hidden;
+            line-height: 1.5; color: var(--text-dark); background-color: var(--bg-light);
+            font-size: 14px; width: 100%; overflow-x: hidden;
         }
-
-        /* 100% жидкий экран без боковых полей */
-        .container {
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 12px; 
-        }
-
-        .hero {
-            padding: 24px 0 0 0; 
-            background-color: transparent;
-            width: 100%;
-        }
-
-        /* Главное окно с рамкой */
+        .container { width: 100%; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+        .hero { padding: 24px 0 0 0; background-color: transparent; width: 100%; }
         .hero-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--primary-color);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            width: 100%;
-            padding: 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            background-color: var(--bg-card); border: 1px solid var(--primary-color);
+            border-radius: var(--border-radius); overflow: hidden; width: 100%;
+            padding: 18px; display: flex; flex-direction: column; gap: 16px;
         }
-
-        /* Верхняя часть: фото наравне с именем и цитатой */
-        .hero-header {
-            display: flex;
-            flex-direction: column; /* На смартфонах вертикально */
-            gap: 16px;
-            width: 100%;
-        }
-
-        .hero-image-side {
-            flex: 1;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #ffffff;
-        }
-
-        .hero-image-side img {
-            width: 100%;
-            height: auto;
-            max-height: 350px;
-            object-fit: contain; /* Фото видно на 100% полностью */
-            display: block;
-        }
-
-        .hero-text-side {
-            flex: 1.2;
-            width: 100%;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .hero-name {
-            font-size: 1.8rem; 
-            color: var(--primary-color);
-            margin-bottom: 6px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .hero-title {
-            font-size: 1.05rem; 
-            color: var(--accent-color);
-            margin-bottom: 14px;
-            line-height: 1.4;
-            font-weight: 500;
-        }
-
-        .hero-quote {
-            border-top: 1px solid #eef3f8;
-            border-bottom: 1px solid #eef3f8;
-            padding: 12px 0;
-            font-style: italic;
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            line-height: 1.5;
-        }
-
-        /* Основа подхода: строго ПОД фото и описанием во всю ширину */
-        .hero-basis {
-            background-color: #f4f7fa;
-            padding: 14px 16px;
-            border-radius: 10px;
-            text-align: left;
-            border-left: 4px solid var(--accent-color);
-            width: 100%;
-        }
-
-        .hero-basis h3 {
-            font-size: 0.9rem;
-            color: var(--primary-color);
-            margin-bottom: 4px;
-            font-weight: 600;
-        }
-
-        .hero-basis p {
-            font-size: 0.82rem;
-            color: #5a6b7c;
-            line-height: 1.45;
-        }
-
-        .menu-sections {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding-bottom: 10px;
-        }
-
-        /* Темно-синие рамки вокруг раскрывающихся окон */
-        .accordion-item {
-            background-color: var(--bg-card);
-            border: 1px solid var(--primary-color);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .accordion-btn {
-            width: 100%;
-            background: var(--bg-card);
-            border: none;
-            outline: none;
-            padding: 18px 20px; 
-            text-align: left;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .accordion-btn:after {
-            content: '\276F'; 
-            font-size: 0.75rem;
-            color: var(--accent-color);
-            transition: transform 0.3s ease;
-        }
-
-        .accordion-item.active .accordion-btn {
-            background-color: #f7fafc;
-            border-bottom: 1px solid #eef3f8;
-        }
-
-        .accordion-item.active .accordion-btn:after {
-            transform: rotate(90deg); 
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background-color: var(--bg-card);
-            width: 100%;
-        }
-
-        .accordion-inner {
-            padding: 22px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            width: 100%;
-        }
-
-        .inner-card {
-            border-left: 3px solid var(--accent-color);
-            padding-left: 12px;
-            padding-top: 2px;
-            padding-bottom: 2px;
-        }
-
-        .inner-card h4 {
-            font-size: 1.05rem;
-            color: var(--primary-color);
-            margin-bottom: 4px;
-            font-weight: 600;
-        }
-
-        .inner-card p {
-            font-size: 0.85rem;
-            color: #4a5568;
-        }
-
-        .verbatim-review {
-            background-color: #f8fafc;
-            padding: 14px 16px;
-            border-radius: 10px;
-            border: 1px solid #ebf1f5;
-            width: 100%;
-        }
-
-        .verbatim-review p {
-            font-style: italic;
-            font-size: 0.85rem;
-            color: #334155;
-            line-height: 1.5;
-            margin-bottom: 8px;
-        }
-
-        .verbatim-author {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            text-align: left;
-            border-bottom: 1px dashed #e2eaf2;
-            padding-bottom: 4px;
-            margin-bottom: 6px;
-        }
-
-        .inner-list {
-            list-style: none;
-        }
-
-        .inner-list li {
-            position: relative;
-            padding-left: 14px;
-            margin-bottom: 10px;
-            font-size: 0.85rem;
-            color: #4a5568;
-        }
-
-        .inner-list li::before {
-            content: "•";
-            color: var(--accent-color);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-            top: -1px;
-        }
-
-        .contact-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 8px;
-            width: 100%;
-        }
-
-        .btn-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            width: 100%; 
-            background-color: #e6f0fa; 
-            border: 1px solid var(--primary-color); 
-            color: var(--primary-color); 
-            transition: background-color 0.15s ease;
-        }
-
-        .btn-link:active {
-            background-color: #d4e5f7; 
-        }
-
-        .contacts-footer {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            padding: 0 20px 20px 20px;
-        }
-
-        /* На планшетах и ПК активируется двухколоночный режим для идеального выравнивания наравне */
+        .hero-header { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+        .hero-image-side { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; background-color: #ffffff; }
+        .hero-image-side img { width: 100%; height: auto; max-height: 350px; object-fit: contain; display: block; }
+        .hero-text-side { flex: 1.2; width: 100%; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+        .hero-name { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 6px; font-weight: 700; letter-spacing: -0.5px; }
+        .hero-title { font-size: 1.05rem; color: var(--accent-color); margin-bottom: 14px; line-height: 1.4; font-weight: 500; }
+        .hero-quote { border-top: 1px solid #eef3f8; border-bottom: 1px solid #eef3f8; padding: 12px 0; font-style: italic; color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+        .hero-basis { background-color: #f4f7fa; padding: 14px 16px; border-radius: 10px; text-align: left; border-left: 4px solid var(--accent-color); width: 100%; }
+        .hero-basis h3 { font-size: 0.9rem; color: var(--primary-color); margin-bottom: 4px; font-weight: 600; }
+        .hero-basis p { font-size: 0.82rem; color: #5a6b7c; line-height: 1.45; }
+        .menu-sections { width: 100%; display: flex; flex-direction: column; gap: 12px; padding-bottom: 10px; }
+        .accordion-item { background-color: var(--bg-card); border: 1px solid var(--primary-color); border-radius: var(--border-radius); overflow: hidden; width: 100%; }
+        .accordion-btn { width: 100%; background: var(--bg-card); border: none; outline: none; padding: 18px 20px; text-align: left; font-size: 1.05rem; font-weight: 600; color: var(--primary-color); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .accordion-btn:after { content: '\276F'; font-size: 0.75rem; color: var(--accent-color); transition: transform 0.3s ease; }
+        .accordion-item.active .accordion-btn { background-color: #f7fafc; border-bottom: 1px solid #eef3f8; }
+        .accordion-item.active .accordion-btn:after { transform: rotate(90deg); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: var(--bg-card); width: 100%; }
+        .accordion-inner { padding: 22px 20px; display: flex; flex-direction: column; gap: 16px; width: 100%; }
+        .inner-card { border-left: 3px solid var(--accent-color); padding-left: 12px; padding-top: 2px; padding-bottom: 2px; }
+        .inner-card h4 { font-size: 1.05rem; color: var(--primary-color); margin-bottom: 4px; font-weight: 600; }
+        .inner-card p { font-size: 0.85rem; color: #4a5568; }
+        .verbatim-review { background-color: #f8fafc; padding: 14px 16px; border-radius: 10px; border: 1px solid #ebf1f5; width: 100%; }
+        .verbatim-review p { font-style: italic; font-size: 0.85rem; color: #334155; line-height: 1.5; margin-bottom: 8px; }
+        .verbatim-author { font-size: 0.8rem; font-weight: 600; color: var(--accent-color); text-align: left; border-bottom: 1px dashed #e2eaf2; padding-bottom: 4px; margin-bottom: 6px; }
+        .inner-list { list-style: none; }
+        .inner-list li { position: relative; padding-left: 14px; margin-bottom: 10px; font-size: 0.85rem; color: #4a5568; }
+        .inner-list li::before { content: "•"; color: var(--accent-color); font-weight: bold; position: absolute; left: 0; top: -1px; }
+        .contact-buttons { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; width: 100%; }
+        .btn-link { display: flex; align-items: center; justify-content: center; padding: 14px; border-radius: 10px; text-decoration: none; font-size: 0.95rem; font-weight: 600; width: 100%; background-color: #e6f0fa; border: 1px solid var(--primary-color); color: var(--primary-color); transition: background-color 0.15s ease; }
+        .btn-link:active { background-color: #d4e5f7; }
+        .contacts-footer { text-align: center; margin-top: 10px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; padding: 0 20px 20px 20px; }
+        .corner-btn { position: fixed; top: 14px; right: 14px; z-index: 300; min-width: 44px; height: 44px; padding: 0 14px; border-radius: 22px; background: var(--primary-color); color: #fff; border: none; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .screen { display: none; position: fixed; inset: 0; background: var(--bg-light); z-index: 200; overflow-y: auto; padding: 70px 16px 40px; }
+        .screen.active { display: block; }
+        .screen-card { background: var(--bg-card); border: 1px solid var(--primary-color); border-radius: var(--border-radius); padding: 20px; max-width: 700px; margin: 0 auto; }
+        .screen h2 { color: var(--primary-color); margin-bottom: 16px; font-size: 1.3rem; }
+        .close-btn { float: right; background: none; border: none; font-size: 22px; color: var(--primary-color); cursor: pointer; }
+        .field { margin-bottom: 14px; }
+        .field label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px; }
+        .field input, .field textarea, .field select { width: 100%; padding: 12px; border: 1px solid #cdd9e5; border-radius: 10px; font-size: 1rem; font-family: inherit; background: #fff; }
+        .field textarea { min-height: 80px; resize: vertical; }
+        .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--accent-color); }
+        .btn-primary { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid var(--primary-color); background: #e6f0fa; color: var(--primary-color); font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 6px; }
+        .btn-primary:active { background: #d4e5f7; }
+        .btn-secondary { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cdd9e5; background: #f8fafc; color: var(--text-dark); font-size: 0.95rem; font-weight: 600; cursor: pointer; margin-top: 8px; }
+        .error-msg { color: #c0392b; font-size: 0.85rem; margin-top: 8px; min-height: 1.2em; }
+        .account-layout { display: flex; flex-direction: column; gap: 16px; }
+        .photo-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .photo-placeholder { width: 100%; max-width: 220px; aspect-ratio: 1 / 1; border: 2px dashed #b8c9da; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; background: #f8fafc; text-align: center; }
+        .secret-digits { font-size: 0.85rem; color: var(--red); font-weight: 700; letter-spacing: 2px; text-align: center; }
+        .secret-warn { font-size: 0.72rem; color: var(--text-muted); text-align: center; max-width: 220px; line-height: 1.35; }
+        .account-info { flex: 1; }
+        .account-info .row { padding: 10px 0; border-bottom: 1px solid #eef3f8; font-size: 1rem; color: var(--text-dark); }
+        .account-info .row b { color: var(--primary-color); margin-right: 6px; }
+        .account-info .position { font-size: 0.8rem; color: var(--text-muted); padding: 6px 0 10px; border-bottom: 1px solid #eef3f8; }
+        .accounts-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+        .account-item { display: flex; justify-content: space-between; align-items: center; padding: 14px; border: 1px solid #cdd9e5; border-radius: 10px; background: #fff; cursor: pointer; }
+        .account-item:active { background: #f0f4f8; }
+        .account-item .name { font-weight: 600; color: var(--primary-color); }
+        .account-item .login { font-size: 0.8rem; color: var(--text-muted); }
+        .action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+        .rating { display: flex; gap: 4px; margin-top: 6px; font-size: 1.4rem; }
+        .rating .star { color: #d5dde5; }
+        .rating .star.filled { color: #f5b301; }
+        .lesson-item { display: flex; justify-content: space-between; align-items: center; padding: 16px; border: 1px solid #cdd9e5; border-radius: 10px; background: #fff; cursor: pointer; margin-bottom: 10px; }
+        .lesson-item:active { background: #f0f4f8; }
+        .lesson-item.disabled { opacity: 0.55; cursor: default; }
+        .lesson-item.disabled:active { background: #fff; }
+        .lesson-item .lesson-title { font-weight: 600; color: var(--primary-color); font-size: 1rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .lesson-item .lesson-sub { font-size: 0.8rem; color: var(--text-muted); }
+        .status-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .status-dot.current { background: var(--yellow); }
+        .status-dot.passed { background: var(--green); }
+        .status-dot.planned { background: var(--red); }
+        .status-badge { font-size: 0.72rem; padding: 2px 8px; border-radius: 10px; font-weight: 600; color: #fff; }
+        .status-badge.current { background: var(--yellow); color: #4a3b00; }
+        .status-badge.passed { background: var(--green); }
+        .status-badge.planned { background: var(--red); }
+        .warn-box { background: #fff6e5; border: 1px solid #f0c36d; color: #8a5a00; font-size: 0.82rem; padding: 10px 12px; border-radius: 10px; margin-bottom: 12px; }
+        .participant-row { display: flex; flex-direction: column; gap: 8px; padding: 12px; border: 1px solid #e2eaf2; border-radius: 10px; background: #fbfdff; margin-bottom: 10px; }
+        .participant-head { display: flex; align-items: center; gap: 10px; }
+        .participant-head input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--accent-color); }
+        .participant-head .p-name { font-weight: 600; color: var(--primary-color); }
+        .participant-head .p-login { font-size: 0.78rem; color: var(--text-muted); }
+        .star-picker { display: flex; gap: 3px; font-size: 1.5rem; cursor: pointer; user-select: none; }
+        .star-picker .s { color: #d5dde5; }
+        .star-picker .s.on { color: #f5b301; }
+        .file-item { display: flex; justify-content: space-between; align-items: center; padding: 14px; border: 1px solid #cdd9e5; border-radius: 10px; background: #fff; margin-bottom: 10px; }
+        .file-item .f-name { font-weight: 600; color: var(--primary-color); }
+        .file-item .f-sub { font-size: 0.78rem; color: var(--text-muted); }
+        .file-download { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--primary-color); background: #e6f0fa; color: var(--primary-color); font-weight: 600; cursor: pointer; font-size: 0.85rem; }
+        .lesson-topic { font-size: 1.1rem; font-weight: 700; color: var(--primary-color); margin-bottom: 10px; }
+        .lesson-notes { font-size: 0.9rem; color: #4a5568; line-height: 1.6; white-space: pre-line; }
+        .anketa-question { margin-bottom: 16px; }
+        .anketa-question .q-title { font-weight: 600; color: var(--primary-color); margin-bottom: 6px; font-size: 0.92rem; }
+        .anketa-rating-row { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+        .anketa-stars { display: flex; gap: 3px; font-size: 1.7rem; cursor: pointer; user-select: none; }
+        .anketa-stars .s { color: #d5dde5; }
+        .anketa-stars .s.on { color: #f5b301; }
+        .anketa-score-label { font-weight: 700; color: var(--primary-color); font-size: 0.95rem; }
+        .anketa-card { border: 1px solid #cdd9e5; border-radius: 10px; background: #fff; margin-bottom: 10px; overflow: hidden; }
+        .anketa-card-head { padding: 14px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #f8fafc; }
+        .anketa-card-head .a-name { font-weight: 600; color: var(--primary-color); }
+        .anketa-card-head .a-sub { font-size: 0.78rem; color: var(--text-muted); }
+        .anketa-card-body { display: none; padding: 14px; border-top: 1px solid #eef3f8; font-size: 0.88rem; color: #334155; line-height: 1.6; }
+        .anketa-card.open .anketa-card-body { display: block; }
+        .anketa-card-body .qa { margin-bottom: 10px; }
+        .anketa-card-body .qa b { color: var(--primary-color); display: block; font-size: 0.82rem; }
+        .success-box { background: #eaf7ee; border: 1px solid #9fd8b0; color: #1e7a3c; padding: 14px; border-radius: 10px; text-align: center; font-weight: 600; margin-top: 10px; }
+        .status-select { width: 100%; padding: 10px; border: 1px solid #cdd9e5; border-radius: 10px; font-size: 0.95rem; font-family: inherit; background: #fff; margin-top: 6px; }
+        .import-hint { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; background: #f4f7fa; border-left: 3px solid var(--accent-color); padding: 10px 12px; border-radius: 8px; margin-bottom: 14px; }
+        .import-textarea { width: 100%; min-height: 180px; padding: 12px; border: 1px solid #cdd9e5; border-radius: 10px; font-size: 0.9rem; font-family: inherit; background: #fff; resize: vertical; }
+        .import-result { margin-top: 12px; font-size: 0.88rem; line-height: 1.6; }
+        .import-ok { color: #1e7a3c; font-weight: 600; }
+        .import-warn { color: #8a5a00; }
+        .import-err { color: #c0392b; }
+        .sync-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; }
         @media (min-width: 768px) {
             body { font-size: 15px; }
             .container { max-width: 700px; margin: 0 auto; }
@@ -321,264 +154,1018 @@
             .hero-image-side { padding: 0; }
             .hero-text-side { text-align: left; padding-left: 10px; }
             .contact-buttons { flex-direction: row; }
+            .account-layout { flex-direction: row; align-items: flex-start; }
+            .action-buttons { flex-direction: row; }
+            .participant-row { flex-direction: row; justify-content: space-between; align-items: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. Главный экран -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-card">
-                
-                <!-- Верхняя секция: фото наравне с именем и описанием -->
-                <div class="hero-header">
-                    <div class="hero-image-side">
-                        <img src="image_0WdHJj.png" alt="Ольга Шахова">
+    <button class="corner-btn" id="cornerBtn">👤</button>
+
+    <div id="publicSite">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-card">
+                    <div class="hero-header">
+                        <div class="hero-image-side">
+                            <img src="image_0WdHJj.png" alt="Ольга Шахова">
+                        </div>
+                        <div class="hero-text-side">
+                            <h1 class="hero-name">Ольга Шахова</h1>
+                            <p class="hero-title">Корпоративный тренер Soft & Hard Skills | Наставник | Эксперт по продажам и управлению</p>
+                            <div class="hero-quote">
+                                «Глубокие знания. Проверенная практика. Системный подход. Соединяю искусство наставничества с контекстом ваших реальных задач».
+                            </div>
+                        </div>
                     </div>
-                    <div class="hero-text-side">
-                        <h1 class="hero-name">Ольга Шахова</h1>
-                        <p class="hero-title">Корпоративный тренер Soft & Hard Skills | Наставник | Эксперт по продажам и управлению</p>
-                        <div class="hero-quote">
-                            «Глубокие знания. Проверенная практика. Системный подход. Соединяю искусство наставничества с контекстом ваших реальных задач».
+                    <div class="hero-basis">
+                        <h3>Основа подхода: Методология Lifelong Learning</h3>
+                        <p>Я не просто передаю готовые книжные инструменты, а развиваю у команд способность к метаобучению. Это позволяет сотрудникам осознанно видеть свои слепые зоны, экологично управлять нагрузкой и встраивать новые навыки напрямую в текущие бизнес-задачи.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main class="container">
+            <div class="menu-sections">
+                <div class="accordion-item">
+                    <button class="accordion-btn">Как работает мой подход</button>
+                    <div class="accordion-content">
+                        <div class="accordion-inner">
+                            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 4px;">Результат компании — это сумма действий сотрудников. Моя трехэтапная система трансформирует привычные автоматизмы команды:</p>
+                            <div class="inner-card"><h4>Глубокий аудит</h4><p>Я подсвечиваю скрытые привычки и деструктивные установки сотрудников, которые тормозят бизнес-процессы. Это выявляет истинные, а не мнимые точки роста команды.</p></div>
+                            <div class="inner-card"><h4>Адаптивная программа</h4><p>Я выстраиваю трек развития максимально гибко и реалистично. Программа создается под актуальные задачи бизнеса, портрет команды и ресурсы.</p></div>
+                            <div class="inner-card"><h4>Системный результат</h4><p>Я передаю участникам инструменты метаобучения для непрерывного развития. Это усиливает команду и переводит показатели бизнеса на качественный уровень.</p></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Нижняя секция: основа подхода строго ПОД ними во всю ширину -->
-                <div class="hero-basis">
-                    <h3>Основа подхода: Методология Lifelong Learning</h3>
-                    <p>Я не просто передаю готовые книжные инструменты, а развиваю у команд способность к метаобучению. Это позволяет сотрудникам осознанно видеть свои слепые зоны, экологично управлять нагрузкой и встраивать новые навыки напрямую в текущие бизнес-задачи.</p>
+                <div class="accordion-item">
+                    <button class="accordion-btn">Почему мне стоит доверить обучение</button>
+                    <div class="accordion-content">
+                        <div class="accordion-inner">
+                            <div class="inner-card"><h4>Опыт в масштабах крупного бизнеса</h4><p>Практика внутреннего бизнес-тренера в крупной федеральной B2B-компании с годовым оборотом более 2,5 млрд рублей. Понимаю процессы корпораций изнутри.</p></div>
+                            <div class="inner-card"><h4>13 лет практики и путь личного роста</h4><p>Прошла путь от мерчандайзера до руководителя отдела и профессионального наставника. 6 лет в управлении и 13 лет в продажах — знаю всю специфику рынка.</p></div>
+                            <div class="inner-card"><h4>Профильное образование и методология</h4><p>Высшее образование «Менеджмент», профессиональная переподготовка «Мастерство ведения тренинга», повышение квалификации «Наставничество в групповой и индивидуальной работе».</p></div>
+                            <div class="inner-card"><h4>Создание сильных команд с нуля</h4><p>Запускаю результативные отделы продаж: от системной настройки процессов до вывода каждого сотрудника на пик эффективности.</p></div>
+                            <div class="inner-card"><h4>Фокус на человеке и его реальности</h4><p>Экспертно управляю групповой динамикой и фасилитацией. Сочетаю глубокое индивидуальное сопровождение с бережной, поддерживающей подачей: простым языком о самом важном.</p></div>
+                            <div class="inner-card"><h4>Признание лидеров рынка</h4><p>Реальные отзывы HRD и CEO крупных компаний. Результаты выпускников — от специалистов отделов сопровождения до топ-менеджеров.</p></div>
+                        </div>
+                    </div>
                 </div>
 
+                <div class="accordion-item">
+                    <button class="accordion-btn">Корпоративные темы обучения</button>
+                    <div class="accordion-content">
+                        <div class="accordion-inner">
+                            <div class="inner-card" style="border-left-color: var(--primary-color);">
+                                <h4>I. Развитие Soft Skills</h4>
+                                <ul class="inner-list">
+                                    <li>Управление личной эффективностью: формирование внутренней мотивации и ценности обучения.</li>
+                                    <li>Проактивность в работе: переход от реактивного выполнения задач к инициативе.</li>
+                                    <li>Тайм-менеджмент: построение индивидуальной системы планирования в условиях многозадачности.</li>
+                                    <li>Деловые коммуникации: инструменты экологичного влияния и переговорные навыки.</li>
+                                    <li>Стратегическое планирование: постановка, декомпозиция и прогнозирование целей.</li>
+                                    <li>Эмоциональная устойчивость: управление стрессом, профилактика выгорания и развитие профессиональной уверенности.</li>
+                                    <li>AI-интеграция: эффективная работа с нейросетями для кратного повышения личной продуктивности.</li>
+                                </ul>
+                            </div>
+                            <div class="inner-card" style="border-left-color: var(--primary-color);">
+                                <h4>II. Команда и лидерство</h4>
+                                <ul class="inner-list">
+                                    <li>Системное делегирование: матрица постановки задач и сквозной контроль исполнения.</li>
+                                    <li>Управление мотивацией: разработка KPI и нематериальные триггеры вовлеченности.</li>
+                                    <li>Командное целеполагание: планирование, декомпозиция и прогнозирование KPI подразделения.</li>
+                                    <li>Система менторинга: качественный подбор, бесшовная адаптация и наставничество сотрудников внутри команды.</li>
+                                    <li>Культура синхронизации: эффективные летучки, встречи 1-на-1 и фасилитация по принципам коучинга.</li>
+                                    <li>Групповая динамика: модерация стратегических сессий, брейнштормов и мастер-майндов.</li>
+                                    <li>Управление изменениями: лидерские компетенции при трансформации бизнес-процессов.</li>
+                                </ul>
+                            </div>
+                            <div class="inner-card" style="border-left-color: var(--primary-color);">
+                                <h4>III. Hard Skills в продажах</h4>
+                                <ul class="inner-list">
+                                    <li>Аналитика рынка: сегментация целевой аудитории и оценка потенциала клиента.</li>
+                                    <li>Управление воронкой: от установки контакта и квалификации потребностей до согласования условий.</li>
+                                    <li>Эффективный оффер: разработка кастомизированных КП и системная работа с возражениями.</li>
+                                    <li>Анализ и оптимизация: метрики конверсии воронки и инструменты ее расширения.</li>
+                                    <li>Key Account Management: стратегии развития и удержания ключевых клиентов.</li>
+                                    <li>Психология переговоров: управление диалогом, системная подготовка и post-анализ встреч.</li>
+                                    <li>Самообучающаяся команда продаж: инструменты метаобучения и механики передачи лучших практик внутри отдела.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-btn">Отзывы участников программ</button>
+                    <div class="accordion-content">
+                        <div class="accordion-inner">
+                            <div class="verbatim-review"><div class="verbatim-author">Генеральный директор</div><p>«Использую регулярно инструменты, полученные в ходе курса, это позволяет более эффективно управлять рабочим временем, эффективно и с практической пользой проводить собрания и встречи, быстрее принимать решения. Стояла непростая задача - в сжатый срок дать качественный материал и успеть попрактиковаться. Считаю, справились на отлично!»</p></div>
+                            <div class="verbatim-review"><div class="verbatim-author">Руководитель отдела продаж</div><p>«Появилось системное делегирование. Сместился фокус с "Как сделать?" на "Какой результат?". Менеджеры стали чаще приносить решения, а не вопросы. Меньше стало операционки».</p></div>
+                            <div class="verbatim-review"><div class="verbatim-author">Руководитель технического отдела</div><p>«Применять начал инструменты эффективной коммуникации и донесения ценности. Результатом были хорошие переговоры с двумя производителями в проблемных точках. Рекомендую курс как будущим, так и действующим руководителям. Это точно очень полезная информация».</p></div>
+                            <div class="verbatim-review"><div class="verbatim-author">Руководитель отдела продаж</div><p>«У меня отсутствовали навыки управления. На курсе почерпнула много рабочих инструментов, которые структурировали мою работу и напрямую повлияли на мою эффективность. Ольга информацию доносила интересно. Здорово, что было много практики».</p></div>
+                            <div class="verbatim-review"><div class="verbatim-author">Руководитель отдела продаж</div><p>«Курс был полезным. Много интересной информации, прокачка навыков руководителя. Практическая часть занятий особенно порадовала, потому что до этого на обучениях давали больше теории. Спасибо огромное Оле Шаховой за атмосферу роста и доверия. Спасибо за профессионализм и душу, которую вы вложили в наше обучение.»</p></div>
+                            <div class="verbatim-review"><div class="verbatim-author">Менеджер активных продаж</div><p>«Теперь я готовлюсь ко встречам, анализирую работу с клиентом. Хочется отметить максимальную вовлеченность и компетентность тренера. Благодарю за продуктивный подход!»</p></div>
+                            <div class="verbatim-review"><div class="verbatim-author">Менеджер активных продаж</div><p>«Пришло более четкое осознание, что необходимо делать и в какой последовательности для того, чтобы иметь шанс получить удовлетворяющий меня результат. Тренер – супер!»</p></div>
+                            <div class="verbatim-review"><div class="verbatim-author">Менеджер активных продаж</div><p>«Я начала планировать свои дела, составлять расписание дел, стала более собрана и компетентна в переговорах с клиентами. Практика с реальными кейсами - супер! Такие надо проводить и вне обучения, искать разные методы решения ситуации. Оля, ты крутая! спасибо, что вникла в боли сотрудников и всегда пыталась найти пути решения»</p></div>
+                            <div class="verbatim-review"><div class="verbatim-author">Менеджер активных продаж</div><p>«Я стал качественнее готовиться ко встречам и больше анализировать их. Я бы всем порекомендовал данный курс. Каждый специалист на своей позиции извлечет что-то полезное из курса и сможет это применить на практике. Хочется выразить слова благодарности, это было полезно и интересно. Оля крутой спикер, который может найти решение любой проблемы, возникающей в ходе курса».</p></div>
+                            <div class="verbatim-review"><div class="verbatim-author">Менеджер отдела сопровождения</div><p>«У меня появилось больше порядка в рабочих процессах и меньше стресса. Данный курс нужен всем, даже не только в продажах. Так как там можно для себя многое почерпнуть и узнать что-то новое не только для работы, но также и для жизни».</p></div>
+                            <div class="verbatim-review"><div class="verbatim-author">Менеджер отдела сопровождения</div><p>«Улучшилось понимание коллег. Теперь тренируюсь брать на себя ответственность за результат в рамках моих рабочих задач».</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-btn">Связь со мной</button>
+                    <div class="accordion-content">
+                        <div class="accordion-inner">
+                            <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-bottom: 4px;">Выберите удобный канал для прямой связи:</p>
+                            <div class="contact-buttons">
+                                <a href="tel:89633481390" class="btn-link">Мой телефон</a>
+                                <a href="mailto:reason_project@mail.ru" class="btn-link">Моя почта</a>
+                            </div>
+                            <p style="font-size: 0.85rem; text-align: center; color: var(--primary-color); margin-top: 6px;">📍 Локация: Санкт-Петербург</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="contacts-footer">
+                <b>Ольга Шахова</b> — корпоративный тренер, наставник и эксперт. Развитие личной эффективности для командного результата. © 2026
+                <div style="margin-top: 8px; font-size: 0.75rem; opacity: 0.8;">
+                    Сайт разработан <b>сообществом Ink©</b><br>
+                    Почта для связи: Maximdshahov@gmail.com
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- ВХОД -->
+    <div class="screen" id="loginScreen">
+        <div class="screen-card">
+            <button class="close-btn" data-close>✕</button>
+            <h2>Вход в аккаунт</h2>
+            <div class="field"><label>Логин</label><input type="text" id="loginInput" placeholder="Логин"></div>
+            <div class="field"><label>Пароль</label><input type="password" id="passwordInput" placeholder="Пароль"></div>
+            <button class="btn-primary" id="loginBtn">Войти</button>
+            <div class="error-msg" id="loginError"></div>
+        </div>
+    </div>
+
+    <!-- АККАУНТ -->
+    <div class="screen" id="accountScreen">
+        <div class="screen-card">
+            <button class="close-btn" data-close>✕</button>
+            <div class="account-layout">
+                <div class="photo-col">
+                    <div class="photo-placeholder">Фото<br>(заглушка)</div>
+                    <div id="secretDigitsBox" style="display:none;">
+                        <div class="secret-digits" id="secretDigits">***</div>
+                        <div class="secret-warn">Никому не рассказывайте эти цифры — они часть вашего пароля.</div>
+                    </div>
+                </div>
+                <div class="account-info">
+                    <div class="row"><b>Имя:</b> <span id="accFirstName">—</span></div>
+                    <div class="row"><b>Фамилия:</b> <span id="accLastName">—</span></div>
+                    <div class="row"><b>Отчество:</b> <span id="accMiddleName">—</span></div>
+                    <div class="position" id="accPosition">—</div>
+                    <div class="row" id="accRatingRow" style="display:none;">
+                        <b>Рейтинг:</b>
+                        <div class="rating" id="ratingStars"></div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-primary" id="openAccountsBtn" style="display:none;">Аккаунты</button>
+                        <button class="btn-primary" id="openLessonsBtn">Занятия</button>
+                        <button class="btn-primary" id="openParticipantsBtn">Участники</button>
+                        <button class="btn-primary" id="openAnketaBtn" style="display:none;">Анкета о последнем занятии</button>
+                        <button class="btn-primary" id="openAdminAnketyBtn" style="display:none;">Просмотр анкет</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-
-    <!-- 2. Интерактивные полноэкранные окна-пункты в один уровень -->
-    <main class="container">
-        <div class="menu-sections">
-
-            <!-- ОКНО 1: Как работает мой подход -->
-            <div class="accordion-item">
-                <button class="accordion-btn">Как работает мой подход</button>
-                <div class="accordion-content">
-                    <div class="accordion-inner">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 4px;">Результат компании — это сумма действий сотрудников. Моя трехэтапная система трансформирует привычные автоматизмы команды:</p>
-                        <div class="inner-card">
-                            <h4>Глубокий аудит</h4>
-                            <p>Я подсвечиваю скрытые привычки и деструктивные установки сотрудников, которые тормозят бизнес-процессы. Это выявляет истинные, а не мнимые точки роста команды.</p>
-                        </div>
-                        <div class="inner-card">
-                            <h4>Адаптивная программа</h4>
-                            <p>Я выстраиваю трек развития максимально гибко и реалистично. Программа создается под актуальные задачи бизнеса, портрет команды и ресурсы.</p>
-                        </div>
-                        <div class="inner-card">
-                            <h4>Системный результат</h4>
-                            <p>Я передаю участникам инструменты метаобучения для непрерывного развития. Это усиливает команду и переводит показатели бизнеса на качественный уровень.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ОКНО 2: Почему мне стоит доверить обучение -->
-            <div class="accordion-item">
-                <button class="accordion-btn">Почему мне стоит доверить обучение</button>
-                <div class="accordion-content">
-                    <div class="accordion-inner">
-                        <div class="inner-card">
-                            <h4>Опыт в масштабах крупного бизнеса</h4>
-                            <p>Практика внутреннего бизнес-тренера в крупной федеральной B2B-компании с годовым оборотом более 2,5 млрд рублей. Понимаю процессы корпораций изнутри.</p>
-                        </div>
-                        <div class="inner-card">
-                            <h4>13 лет практики и путь личного роста</h4>
-                            <p>Прошла путь от мерчандайзера до руководителя отдела и профессионального наставника. 6 лет в управлении и 13 лет в продажах — знаю всю специфику рынка.</p>
-                        </div>
-                        <div class="inner-card">
-                            <h4>Профильное образование и методология</h4>
-                            <p>Высшее образование «Менеджмент», профессиональная переподготовка «Мастерство ведения тренинга», повышение квалификации «Наставничество в групповой и индивидуальной работе».</p>
-                        </div>
-                        <div class="inner-card">
-                            <h4>Создание сильных команд с нуля</h4>
-                            <p>Запускаю результативные отделы продаж: от системной настройки процессов до вывода каждого сотрудника на пик эффективности.</p>
-                        </div>
-                        <div class="inner-card">
-                            <h4>Фокус на человеке и его реальности</h4>
-                            <p>Экспертно управляю групповой динамикой и фасилитацией. Сочетаю глубокое индивидуальное сопровождение с бережной, поддерживающей подачей: простым языком о самом важном.</p>
-                        </div>
-                        <div class="inner-card">
-                            <h4>Признание лидеров рынка</h4>
-                            <p>Реальные отзывы HRD и CEO крупных компаний. Результаты выпускников — от специалистов отделов сопровождения до топ-менеджеров.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ОКНО 3: Корпоративные темы обучения -->
-            <div class="accordion-item">
-                <button class="accordion-btn">Корпоративные темы обучения</button>
-                <div class="accordion-content">
-                    <div class="accordion-inner">
-                        <div class="inner-card" style="border-left-color: var(--primary-color);">
-                            <h4>I. Развитие Soft Skills</h4>
-                            <ul class="inner-list">
-                                <li>Управление личной эффективностью: формирование внутренней мотивации и ценности обучения.</li>
-                                <li>Проактивность в работе: переход от реактивного выполнения задач к инициативе.</li>
-                                <li>Тайм-менеджмент: построение индивидуальной системы планирования в условиях многозадачности.</li>
-                                <li>Деловые коммуникации: инструменты экологичного влияния и переговорные навыки.</li>
-                                <li>Стратегическое планирование: постановка, декомпозиция и прогнозирование целей.</li>
-                                <li>Эмоциональная устойчивость: управление стрессом, профилактика выгорания и развитие профессиональной уверенности.</li>
-                                <li>AI-интеграция: эффективная работа с нейросетями для кратного повышения личной продуктивности.</li>
-                            </ul>
-                        </div>
-                        <div class="inner-card" style="border-left-color: var(--primary-color);">
-                            <h4>II. Команда и лидерство</h4>
-                            <ul class="inner-list">
-                                <li>Системное делегирование: матрица постановки задач и сквозной контроль исполнения.</li>
-                                <li>Управление мотивацией: разработка KPI и нематериальные триггеры вовлеченности.</li>
-                                <li>Командное целеполагание: планирование, декомпозиция и прогнозирование KPI подразделения.</li>
-                                <li>Система менторинга: качественный подбор, бесшовная адаптация и наставничество сотрудников внутри команды.</li>
-                                <li>Культура синхронизации: эффективные летучки, встречи 1-на-1 и фасилитация по принципам коучинга.</li>
-                                <li>Групповая динамика: модерация стратегических сессий, брейнштормов и мастер-майндов.</li>
-                                <li>Управление изменениями: лидерские компетенции при трансформации бизнес-процессов.</li>
-                            </ul>
-                        </div>
-                        <div class="inner-card" style="border-left-color: var(--primary-color);">
-                            <h4>III. Hard Skills в продажах</h4>
-                            <ul class="inner-list">
-                                <li>Аналитика рынка: сегментация целевой аудитории и оценка потенциала клиента.</li>
-                                <li>Управление воронкой: от установки контакта и квалификации потребностей до согласования условий.</li>
-                                <li>Эффективный оффер: разработка кастомизированных КП и системная работа с возражениями.</li>
-                                <li>Анализ и оптимизация: метрики конверсии воронки и инструменты ее расширения.</li>
-                                <li>Key Account Management: стратегии развития и удержания ключевых клиентов.</li>
-                                <li>Психология переговоров: управление диалогом, системная подготовка и post-анализ встреч.</li>
-                                <li>Самообучающаяся команда продаж: инструменты метаобучения и механики передачи лучших практик внутри отдела.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ОКНО 4: Отзывы людей (ДОСЛОВНО ИЗ СВЕЖИХ СТРАНИЦ PDF) -->
-            <div class="accordion-item">
-                <button class="accordion-btn">Отзывы участников программ</button>
-                <div class="accordion-content">
-                    <div class="accordion-inner">
-                        
-                        <div class="verbatim-review">
-                            <div class="verbatim-author">Генеральный директор</div>
-                            <p>«Использую регулярно инструменты, полученные в ходе курса, это позволяет более эффективно управлять рабочим временем, эффективно и с практической пользой проводить собрания и встречи, быстрее принимать решения. Стояла непростая задача - в сжатый срок дать качественный материал и успеть попрактиковаться. Считаю, справились на отлично!»</p>
-                        </div>
-
-                        <div class="verbatim-review">
-                            <div class="verbatim-author">Руководитель отдела продаж</div>
-                            <p>«Появилось системное делегирование. Сместился фокус с "Как сделать?" на "Какой результат?". Менеджеры стали чаще приносить решения, а не вопросы. Меньше стало операционки».</p>
-                        </div>
-
-                        <div class="verbatim-review">
-                            <div class="verbatim-author">Руководитель технического отдела</div>
-                            <p>«Применять начал инструменты эффективной коммуникации и донесения ценности. Результатом были хорошие переговоры с двумя производителями в проблемных точках. Рекомендую курс как будущим, так и действующим руководителям. Это точно очень полезная информация».</p>
-                        </div>
-
-                        <div class="verbatim-review">
-                            <div class="verbatim-author">Руководитель отдела продаж</div>
-                            <p>«У меня отсутствовали навыки управления. На курсе почерпнула много рабочих инструментов, которые структурировали мою работу и напрямую повлияли на мою эффективность. Ольга информацию доносила интересно. Здорово, что было много практики».</p>
-                        </div>
-
-                        <div class="verbatim-review">
-                            <div class="verbatim-author">Руководитель отдела продаж</div>
-                            <p>«Курс был полезным. Много интересной информации, прокачка навыков руководителя. Практическая часть занятий особенно порадовала, потому что до этого на обучениях давали больше теории. Спасибо огромное Оле Шаховой за атмосферу роста и доверия. Спасибо за профессионализм и душу, которую вы вложили в наше обучение.»</p>
-                        </div>
-
-                        <div class="verbatim-review">
-                            <div class="verbatim-author">Менеджер активных продаж</div>
-                            <p>«Теперь я готовлюсь ко встречам, анализирую работу с клиентом. Хочется отметить максимальную вовлеченность и компетентность тренера. Благодарю за продуктивный подход!»</p>
-                        </div>
-
-                        <div class="verbatim-review">
-                            <div class="verbatim-author">Менеджер активных продаж</div>
-                            <p>«Пришло более четкое осознание, что необходимо делать и в какой последовательности для того, чтобы иметь шанс получить удовлетворяющий меня результат. Тренер – супер!»</p>
-                        </div>
-
-                        <div class="verbatim-review">
-                            <div class="verbatim-author">Менеджер активных продаж</div>
-                            <p>«Я начала планировать свои дела, составлять расписание дел, стала более собрана и компетентна в переговорах с клиентами. Практика с реальными кейсами - супер! Такие надо проводить и вне обучения, искать разные методы решения ситуации. Оля, ты крутая! спасибо, что вникла в боли сотрудников и всегда пыталась найти пути решения»</p>
-                        </div>
-
-                        <div class="verbatim-review">
-                            <div class="verbatim-author">Менеджер активных продаж</div>
-                            <p>«Я стал качественнее готовиться ко встречам и больше анализировать их. Я бы всем порекомендовал данный курс. Каждый специалист на своей позиции извлечет что-то полезное из курса и сможет это применить на практике. Хочется выразить слова благодарности, это было полезно и интересно. Оля крутой спикер, который может найти решение любой проблемы, возникающей в ходе курса».</p>
-                        </div>
-
-                        <div class="verbatim-review">
-                            <div class="verbatim-author">Менеджер отдела сопровождения</div>
-                            <p>«У меня появилось больше порядка в рабочих процессах и меньше стресса. Данный курс нужен всем, даже не только в продажах. Так как там можно для себя многое почерпнуть и узнать что-то новое не только для работы, но также и для жизни».</p>
-                        </div>
-
-                        <div class="verbatim-review">
-                            <div class="verbatim-author">Менеджер отдела сопровождения</div>
-                            <p>«У меня появилось больше порядка в рабочих процессах и меньше стресса. Данный курс нужен всем, даже не только в продажах. Так как там можно для себя многое почерпнуть и узнать что-то новое не только для работы, но также и для жизни».</p>
-                        </div>
-
-                        <div class="verbatim-review">
-                            <div class="verbatim-author">Менеджер отдела сопровождения</div>
-                            <p>«Улучшилось понимание коллег. Теперь тренируюсь брать на себя ответственность за результат в рамках моих рабочих задач».</p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- ОКНО 5: Связь со мной -->
-            <div class="accordion-item">
-                <button class="accordion-btn">Связь со мной</button>
-                <div class="accordion-content">
-                    <div class="accordion-inner">
-                        <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-bottom: 4px;">Выберите удобный канал для прямой связи:</p>
-                        
-                        <div class="contact-buttons">
-                            <!-- Жидкие кнопки связи: голубые с темной рамкой во всю ширину -->
-                            
-                            <a href="tel:89633481390" class="btn-link">
-                                Мой телефон
-                            </a>
-                            <a href="mailto:reason_project@mail.ru" class="btn-link">
-                                Моя почта
-                            </a>
-                        </div>
-                        
-                        <p style="font-size: 0.85rem; text-align: center; color: var(--primary-color); margin-top: 6px;">📍 Локация: Санкт-Петербург</p>
-                    </div>
-                </div>
-            </div>
-
+    <!-- СПИСОК АККАУНТОВ (админ) -->
+    <div class="screen" id="accountsListScreen">
+        <div class="screen-card">
+            <button class="close-btn" data-close>✕</button>
+            <h2>Аккаунты</h2>
+            <p class="sync-note" id="syncNote">Загрузка данных из Stats.docx...</p>
+            <button class="btn-primary" id="createAccountOpenBtn">+ Импорт аккаунтов вручную</button>
+            <div class="accounts-list" id="accountsList"></div>
         </div>
+    </div>
 
-        <!-- Дословный приподнятый копирайт и подпись создателей Ink© из PDF-файла -->
-        <footer class="contacts-footer">
-          <b>  Ольга Шахова </b> — корпоративный тренер, наставник и эксперт. Развитие личной эффективности для командного результата. © 2026
-            <div style="margin-top: 8px; font-size: 0.75rem; opacity: 0.8;">
-                Сайт разработан <b> сообществом Ink© </b> <br>
-                Почта для связи: Maximdshahov@gmail.com
+    <!-- ИМПОРТ АККАУНТОВ -->
+    <div class="screen" id="createAccountScreen">
+        <div class="screen-card">
+            <button class="close-btn" data-close-create>✕</button>
+            <h2>Импорт аккаунтов</h2>
+            <div class="import-hint">
+                Формат строки:<br>
+                <code>Имя+Фамилия+Отчество+Логин+Пароль+Должность+3цифры#...</code>
             </div>
-        </footer>
-    </main>
+            <div class="field">
+                <label>Загрузить файл (.docx, .txt)</label>
+                <input type="file" id="importFile" accept=".docx,.txt,.text">
+            </div>
+            <div class="field">
+                <label>Или вставьте текст вручную</label>
+                <textarea class="import-textarea" id="importText"></textarea>
+            </div>
+            <button class="btn-primary" id="importBtn">Импортировать</button>
+            <div class="import-result" id="importResult"></div>
+        </div>
+    </div>
 
-    <!-- Скрипт плавного раскрытия окон-аккордеонов -->
+    <!-- УЧАСТНИКИ (для всех) -->
+    <div class="screen" id="publicParticipantsScreen">
+        <div class="screen-card">
+            <button class="close-btn" data-close>✕</button>
+            <h2>Участники</h2>
+            <div class="accounts-list" id="publicParticipantsList"></div>
+        </div>
+    </div>
+
+    <!-- СПИСОК ЗАНЯТИЙ -->
+    <div class="screen" id="lessonsScreen">
+        <div class="screen-card">
+            <button class="close-btn" data-close>✕</button>
+            <h2>Занятия</h2>
+            <div id="lessonsList"></div>
+        </div>
+    </div>
+
+    <!-- ЗАНЯТИЕ -->
+    <div class="screen" id="lessonScreen">
+        <div class="screen-card">
+            <button class="close-btn" data-close-lesson>✕</button>
+            <h2 id="lessonTitle">Занятие</h2>
+            <div id="lessonStatusBox"></div>
+            <div id="lessonAdminStatus"></div>
+            <div class="action-buttons" style="flex-direction:column;">
+                <button class="btn-primary" id="openLessonParticipantsBtn" style="display:none;">Участники</button>
+                <button class="btn-primary" id="openFilesBtn">Учебные файлы</button>
+                <button class="btn-primary" id="openAboutBtn">О занятии</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- УЧАСТНИКИ УРОКА (админ) -->
+    <div class="screen" id="participantsScreen">
+        <div class="screen-card">
+            <button class="close-btn" data-close-participants>✕</button>
+            <h2 id="participantsTitle">Участники</h2>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Отметьте, кто участвовал, и поставьте звёзды за этот урок.</p>
+            <div id="participantsList"></div>
+            <button class="btn-primary" id="saveParticipantsBtn">Сохранить</button>
+            <div class="error-msg" id="participantsMsg"></div>
+        </div>
+    </div>
+
+    <!-- ФАЙЛЫ -->
+    <div class="screen" id="filesScreen">
+        <div class="screen-card">
+            <button class="close-btn" data-close-files>✕</button>
+            <h2>Учебные файлы</h2>
+            <div id="filesList"></div>
+        </div>
+    </div>
+
+    <!-- О ЗАНЯТИИ -->
+    <div class="screen" id="aboutScreen">
+        <div class="screen-card">
+            <button class="close-btn" data-close-about>✕</button>
+            <h2>О занятии</h2>
+            <div class="lesson-topic" id="aboutTopic">—</div>
+            <div class="lesson-notes" id="aboutNotes">—</div>
+        </div>
+    </div>
+
+    <!-- АНКЕТА -->
+    <div class="screen" id="anketaScreen">
+        <div class="screen-card">
+            <button class="close-btn" data-close-anketa>✕</button>
+            <h2>Анкета о последнем занятии</h2>
+            <div id="anketaForm">
+                <div class="anketa-question"><div class="q-title">Что было интересно?</div><textarea id="q1" placeholder="Ваш ответ..."></textarea></div>
+                <div class="anketa-question"><div class="q-title">Что Вы узнали нового?</div><textarea id="q2" placeholder="Ваш ответ..."></textarea></div>
+                <div class="anketa-question"><div class="q-title">Чего Вам не хватило в занятии?</div><textarea id="q3" placeholder="Ваш ответ..."></textarea></div>
+                <div class="anketa-question"><div class="q-title">Какова была атмосфера во время занятия?</div><textarea id="q4" placeholder="Ваш ответ..."></textarea></div>
+                <div class="anketa-question">
+                    <div class="q-title">Понятен ли был материал?</div>
+                    <select id="q5">
+                        <option value="">— выберите —</option>
+                        <option value="Да, полностью понятен">Да, полностью понятен</option>
+                        <option value="В основном понятен">В основном понятен</option>
+                        <option value="Частично понятен">Частично понятен</option>
+                        <option value="Нет, непонятен">Нет, непонятен</option>
+                    </select>
+                </div>
+                <div class="anketa-question">
+                    <div class="q-title">Ваша оценка занятия</div>
+                    <div class="anketa-rating-row">
+                        <div class="anketa-stars" id="anketaStars"></div>
+                        <div class="anketa-score-label" id="anketaScoreLabel">0/10</div>
+                    </div>
+                    <div style="margin-top:10px;">
+                        <div class="q-title">Почему именно такая оценка?</div>
+                        <textarea id="q6" placeholder="Ваш ответ..."></textarea>
+                    </div>
+                </div>
+                <div class="error-msg" id="anketaError"></div>
+                <button class="btn-primary" id="saveAnketaBtn">Сохранить анкету</button>
+                <button class="btn-secondary" id="laterAnketaBtn">Вернуться к анкете позже</button>
+                <div class="success-box" id="anketaSuccess" style="display:none;">Спасибо за отзыв!</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ПРОСМОТР АНКЕТ (админ) -->
+    <div class="screen" id="adminAnketyScreen">
+        <div class="screen-card">
+            <button class="close-btn" data-close-admin-ankety>✕</button>
+            <h2>Просмотр анкет</h2>
+            <div class="field"><label>Выберите урок</label><select id="adminAnketyLessonSelect"></select></div>
+            <div id="adminAnketyList"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
+
     <script>
         document.querySelectorAll('.accordion-btn').forEach(button => {
             button.addEventListener('click', () => {
-                const accordionItem = button.parentElement;
-                const content = accordionItem.querySelector('.accordion-content');
-                
-                accordionItem.classList.toggle('active');
-                
-                if (accordionItem.classList.contains('active')) {
-                    content.style.maxHeight = content.scrollHeight + "px";
+                const item = button.parentElement;
+                const content = item.querySelector('.accordion-content');
+                if (!content) return;
+                item.classList.toggle('active');
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
                 } else {
-                    content.style.maxHeight = "0px";
+                    content.style.maxHeight = '0px';
                 }
             });
         });
+    </script>
+
+    <script>
+        (function() {
+            const STORAGE_KEY = 'osha_accounts_v5';
+            const SESSION_KEY = 'osha_session_v5';
+            const LESSONS_KEY = 'osha_lessons_v5';
+            const ANKETY_KEY = 'osha_ankety_v5';
+            const STATS_FILE = 'Stats.docx';
+
+            const publicSite = document.getElementById('publicSite');
+            const cornerBtn = document.getElementById('cornerBtn');
+
+            // ---------- ЗАНЯТИЯ ----------
+            function defaultLessons() {
+                return [
+                    {
+                        id: 'lesson-1',
+                        title: 'Занятие 1',
+                        topic: 'Введение в продажи и установление контакта',
+                        notes: 'На этом занятии разбираем:\n— структуру продаж и этапы воронки;\n— как устанавливать контакт с клиентом;\n— типичные ошибки на первом этапе.\n\nДомашнее задание: подготовить 3 вопроса для квалификации клиента.',
+                        files: [{ name: 'Презентация занятия 1.pdf', size: '2.4 МБ' }],
+                        grades: {},
+                        manualStatus: 'current'
+                    },
+                    {
+                        id: 'lesson-2',
+                        title: 'Занятие 2',
+                        topic: 'Квалификация потребностей и работа с возражениями',
+                        notes: 'Конспект 2...',
+                        files: [{ name: 'Скрипты.pdf', size: '780 КБ' }],
+                        grades: {},
+                        manualStatus: 'planned'
+                    }
+                ];
+            }
+
+            function loadLessons() {
+                const raw = localStorage.getItem(LESSONS_KEY);
+                if (!raw) {
+                    const def = defaultLessons();
+                    localStorage.setItem(LESSONS_KEY, JSON.stringify(def));
+                    return def;
+                }
+                try { return JSON.parse(raw); } catch (e) { return defaultLessons(); }
+            }
+            function saveLessons(lessons) { localStorage.setItem(LESSONS_KEY, JSON.stringify(lessons)); }
+
+            function isLessonComplete(lesson) {
+                return (lesson.topic && lesson.topic.trim()) &&
+                       (lesson.notes && lesson.notes.trim()) &&
+                       (lesson.files && lesson.files.length > 0) &&
+                       (lesson.grades && Object.keys(lesson.grades).some(k => lesson.grades[k].participated));
+            }
+
+            function getLessonStatus(lesson) {
+                if (lesson.manualStatus === 'planned') return 'planned';
+                if (lesson.manualStatus === 'passed') return isLessonComplete(lesson) ? 'passed' : 'planned';
+                return 'current';
+            }
+
+            function ensureSingleCurrent() {
+                const lessons = loadLessons();
+                let currentFound = false;
+                let changed = false;
+                lessons.forEach(l => {
+                    if (l.manualStatus === 'current') {
+                        if (currentFound) { l.manualStatus = 'passed'; changed = true; }
+                        else currentFound = true;
+                    }
+                });
+                if (changed) saveLessons(lessons);
+            }
+
+            // ---------- АККАУНТЫ ----------
+            function loadAccounts() {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return [];
+                try { return JSON.parse(raw); } catch (e) { return []; }
+            }
+            function saveAccounts(accs) { localStorage.setItem(STORAGE_KEY, JSON.stringify(accs)); }
+
+            function getSession() {
+                try { return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); } catch (e) { return null; }
+            }
+            function setSession(id) { localStorage.setItem(SESSION_KEY, JSON.stringify({ id })); }
+            function clearSession() { localStorage.removeItem(SESSION_KEY); }
+
+            // ---------- АНКЕТЫ ----------
+            function loadAnkety() {
+                try { return JSON.parse(localStorage.getItem(ANKETY_KEY) || '{}'); } catch (e) { return {}; }
+            }
+            function saveAnkety(data) { localStorage.setItem(ANKETY_KEY, JSON.stringify(data)); }
+
+            // ---------- РЕЙТИНГ ----------
+            function calcRating(accountId) {
+                const lessons = loadLessons();
+                const values = [];
+                lessons.forEach(l => {
+                    const g = l.grades && l.grades[accountId];
+                    if (g && g.participated) values.push(Number(g.stars) || 0);
+                });
+                if (values.length === 0) return 0;
+                return Math.ceil(values.reduce((a, b) => a + b, 0) / values.length);
+            }
+
+            // ---------- ЭКРАНЫ ----------
+            function show(screenId) {
+                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+                const el = document.getElementById(screenId);
+                if (el) el.classList.add('active');
+            }
+            function hideAllScreens() { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); }
+            function showPublicSite() {
+                publicSite.style.display = 'block';
+                hideAllScreens();
+                cornerBtn.textContent = '👤';
+            }
+            function showLoggedIn() {
+                publicSite.style.display = 'none';
+                cornerBtn.textContent = 'Выйти';
+            }
+
+            cornerBtn.addEventListener('click', () => {
+                const sess = getSession();
+                if (sess) { clearSession(); showPublicSite(); }
+                else { document.getElementById('loginError').textContent = ''; show('loginScreen'); }
+            });
+
+            document.getElementById('loginBtn').addEventListener('click', () => {
+                const login = document.getElementById('loginInput').value.trim();
+                const pass = document.getElementById('passwordInput').value;
+                const err = document.getElementById('loginError');
+                const accs = loadAccounts();
+                const found = accs.find(a => a.login === login && a.password === pass);
+                if (!found) { err.textContent = 'Неверный логин или пароль.'; return; }
+                setSession(found.id);
+                document.getElementById('loginInput').value = '';
+                document.getElementById('passwordInput').value = '';
+                showLoggedIn();
+                openAccountScreen(found.id);
+            });
+
+            // ---------- АККАУНТ ----------
+            function openAccountScreen(id) {
+                const accs = loadAccounts();
+                const acc = accs.find(a => a.id === id);
+                if (!acc) { clearSession(); showPublicSite(); return; }
+
+                showLoggedIn();
+                document.getElementById('accFirstName').textContent = acc.firstName || '—';
+                document.getElementById('accLastName').textContent = acc.lastName || '—';
+                document.getElementById('accMiddleName').textContent = acc.middleName || '—';
+                document.getElementById('accPosition').textContent = acc.position || '—';
+
+                const sess = getSession();
+                const isOwner = sess && sess.id === acc.id;
+                const secretBox = document.getElementById('secretDigitsBox');
+                if (isOwner && acc.secretDigits) {
+                    secretBox.style.display = 'block';
+                    document.getElementById('secretDigits').textContent = acc.secretDigits;
+                } else {
+                    secretBox.style.display = 'none';
+                }
+
+                const ratingRow = document.getElementById('accRatingRow');
+                const rating = acc.role === 'admin' ? 10 : calcRating(acc.id);
+                ratingRow.style.display = 'block';
+                renderStars(document.getElementById('ratingStars'), rating);
+
+                document.getElementById('openAccountsBtn').style.display = acc.role === 'admin' ? 'block' : 'none';
+                document.getElementById('openAccountsBtn').onclick = () => { hideAllScreens(); renderAccountsList(); show('accountsListScreen'); };
+
+                document.getElementById('openLessonsBtn').onclick = () => { hideAllScreens(); renderLessonsList(); show('lessonsScreen'); };
+                document.getElementById('openParticipantsBtn').onclick = () => { hideAllScreens(); renderPublicParticipants(); show('publicParticipantsScreen'); };
+
+                const anketaBtn = document.getElementById('openAnketaBtn');
+                const adminAnketyBtn = document.getElementById('openAdminAnketyBtn');
+                if (acc.role === 'admin') {
+                    anketaBtn.style.display = 'none';
+                    adminAnketyBtn.style.display = 'block';
+                    adminAnketyBtn.onclick = () => { hideAllScreens(); renderAdminAnkety(); show('adminAnketyScreen'); };
+                } else {
+                    const currentLesson = loadLessons().find(l => getLessonStatus(l) === 'current');
+                    if (currentLesson) {
+                        anketaBtn.style.display = 'block';
+                        anketaBtn.onclick = () => { hideAllScreens(); openAnketa(currentLesson.id, acc.id); };
+                    } else anketaBtn.style.display = 'none';
+                    adminAnketyBtn.style.display = 'none';
+                }
+                show('accountScreen');
+            }
+
+            function renderStars(container, rating) {
+                container.innerHTML = '';
+                for (let i = 1; i <= 10; i++) {
+                    const s = document.createElement('span');
+                    s.className = 'star' + (i <= rating ? ' filled' : '');
+                    s.textContent = '★';
+                    container.appendChild(s);
+                }
+            }
+
+            // ---------- СПИСОК АККАУНТОВ (админ) ----------
+            function renderAccountsList() {
+                const accs = loadAccounts();
+                const list = document.getElementById('accountsList');
+                list.innerHTML = '';
+                accs.forEach(acc => {
+                    const item = document.createElement('div');
+                    item.className = 'account-item';
+                    item.innerHTML = '<div><div class="name">' + acc.fullName + '</div><div class="login">' + acc.login + '</div></div><span>›</span>';
+                    item.addEventListener('click', () => { hideAllScreens(); openAccountScreen(acc.id); });
+                    list.appendChild(item);
+                });
+            }
+
+            // ---------- УЧАСТНИКИ ----------
+            function renderPublicParticipants() {
+                const accs = loadAccounts();
+                const list = document.getElementById('publicParticipantsList');
+                list.innerHTML = '';
+                accs.forEach(acc => {
+                    const item = document.createElement('div');
+                    item.className = 'account-item';
+                    const rating = acc.role === 'admin' ? 10 : calcRating(acc.id);
+                    item.innerHTML = '<div><div class="name">' + acc.fullName + '</div><div class="login">' + (acc.position || '') + ' • ★ ' + rating + '/10</div></div><span>›</span>';
+                    item.addEventListener('click', () => { hideAllScreens(); openProfileView(acc.id); });
+                    list.appendChild(item);
+                });
+            }
+
+            function openProfileView(id) {
+                const accs = loadAccounts();
+                const acc = accs.find(a => a.id === id);
+                if (!acc) return;
+                const sess = getSession();
+                const isSelf = sess && sess.id === id;
+                const isAdmin = sess && accs.find(a => a.id === sess.id && a.role === 'admin');
+                if (isSelf || isAdmin) { openAccountScreen(id); return; }
+
+                document.getElementById('accFirstName').textContent = acc.firstName || '—';
+                document.getElementById('accLastName').textContent = acc.lastName || '—';
+                document.getElementById('accMiddleName').textContent = acc.middleName || '—';
+                document.getElementById('accPosition').textContent = acc.position || '—';
+                document.getElementById('secretDigitsBox').style.display = 'none';
+                const rating = acc.role === 'admin' ? 10 : calcRating(acc.id);
+                document.getElementById('accRatingRow').style.display = 'block';
+                renderStars(document.getElementById('ratingStars'), rating);
+                document.getElementById('openAccountsBtn').style.display = 'none';
+                document.getElementById('openLessonsBtn').style.display = 'none';
+                document.getElementById('openParticipantsBtn').style.display = 'none';
+                document.getElementById('openAnketaBtn').style.display = 'none';
+                document.getElementById('openAdminAnketyBtn').style.display = 'none';
+                show('accountScreen');
+            }
+
+            // ---------- ЗАНЯТИЯ ----------
+            function renderLessonsList() {
+                ensureSingleCurrent();
+                const lessons = loadLessons();
+                const list = document.getElementById('lessonsList');
+                list.innerHTML = '';
+                const order = { current: 0, passed: 1, planned: 2 };
+                lessons.sort((a, b) => order[getLessonStatus(a)] - order[getLessonStatus(b)]);
+                lessons.forEach(lesson => {
+                    const status = getLessonStatus(lesson);
+                    const item = document.createElement('div');
+                    item.className = 'lesson-item';
+                    const statusText = status === 'current' ? 'Текущий' : status === 'passed' ? 'Пройденный' : 'Запланированный';
+                    item.innerHTML = '<div><div class="lesson-title"><span class="status-dot ' + status + '"></span>' + lesson.title + ' <span class="status-badge ' + status + '">' + statusText + '</span></div><div class="lesson-sub">' + (lesson.topic || 'Тема не указана') + '</div></div><span>›</span>';
+                    if (status === 'planned') item.classList.add('disabled');
+                    else item.addEventListener('click', () => { hideAllScreens(); openLessonScreen(lesson.id); });
+                    list.appendChild(item);
+                });
+            }
+
+            let currentLessonId = null;
+            function openLessonScreen(lessonId) {
+                const lessons = loadLessons();
+                const lesson = lessons.find(l => l.id === lessonId);
+                if (!lesson) return;
+                currentLessonId = lessonId;
+                document.getElementById('lessonTitle').textContent = lesson.title;
+
+                const sess = getSession();
+                const accs = loadAccounts();
+                const current = sess ? accs.find(a => a.id === sess.id) : null;
+                const isAdmin = current && current.role === 'admin';
+
+                const status = getLessonStatus(lesson);
+                const statusBox = document.getElementById('lessonStatusBox');
+                const statusText = status === 'current' ? 'Текущий' : status === 'passed' ? 'Пройденный' : 'Запланированный';
+                let html = '<div style="margin-bottom:12px;"><span class="status-badge ' + status + '">' + statusText + '</span></div>';
+                if (lesson.manualStatus === 'passed' && !isLessonComplete(lesson)) {
+                    html += '<div class="warn-box">⚠️ Урок отмечен как «Пройденный», но не все пункты заполнены.</div>';
+                }
+                statusBox.innerHTML = html;
+
+                const adminStatus = document.getElementById('lessonAdminStatus');
+                if (isAdmin) {
+                    adminStatus.innerHTML = '<div style="margin-bottom:12px;"><label style="font-size:0.85rem; color:var(--text-muted);">Изменить статус урока</label><select class="status-select" id="lessonStatusSelect"><option value="current"' + (lesson.manualStatus === 'current' ? ' selected' : '') + '>Текущий</option><option value="passed"' + (lesson.manualStatus === 'passed' ? ' selected' : '') + '>Пройденный</option><option value="planned"' + (lesson.manualStatus === 'planned' ? ' selected' : '') + '>Запланированный</option></select></div>';
+                    setTimeout(() => {
+                        const sel = document.getElementById('lessonStatusSelect');
+                        if (sel) sel.addEventListener('change', () => {
+                            const l2 = loadLessons();
+                            const t = l2.find(l => l.id === lessonId);
+                            if (!t) return;
+                            if (sel.value === 'current') {
+                                l2.forEach(l => { if (l.id !== lessonId && l.manualStatus === 'current') l.manualStatus = isLessonComplete(l) ? 'passed' : 'planned'; });
+                            }
+                            t.manualStatus = sel.value;
+                            saveLessons(l2);
+                            openLessonScreen(lessonId);
+                        });
+                    }, 0);
+                } else adminStatus.innerHTML = '';
+
+                const partBtn = document.getElementById('openLessonParticipantsBtn');
+                if (isAdmin) {
+                    partBtn.style.display = 'block';
+                    partBtn.onclick = () => { hideAllScreens(); renderParticipants(lessonId); show('participantsScreen'); };
+                } else partBtn.style.display = 'none';
+
+                document.getElementById('openFilesBtn').onclick = () => { hideAllScreens(); renderFiles(lessonId); show('filesScreen'); };
+                document.getElementById('openAboutBtn').onclick = () => { hideAllScreens(); renderAbout(lessonId); show('aboutScreen'); };
+                show('lessonScreen');
+            }
+
+            let participantDraft = {};
+            function renderParticipants(lessonId) {
+                const lessons = loadLessons();
+                const lesson = lessons.find(l => l.id === lessonId);
+                if (!lesson) return;
+                document.getElementById('participantsTitle').textContent = 'Участники — ' + lesson.title;
+                document.getElementById('participantsMsg').textContent = '';
+                const accs = loadAccounts().filter(a => a.role !== 'admin');
+                const list = document.getElementById('participantsList');
+                list.innerHTML = '';
+                participantDraft = {};
+                accs.forEach(acc => {
+                    const g = (lesson.grades && lesson.grades[acc.id]) || { participated: false, stars: 0 };
+                    participantDraft[acc.id] = { participated: !!g.participated, stars: Number(g.stars) || 0 };
+                    const row = document.createElement('div');
+                    row.className = 'participant-row';
+                    const head = document.createElement('div');
+                    head.className = 'participant-head';
+                    const cb = document.createElement('input');
+                    cb.type = 'checkbox';
+                    cb.checked = participantDraft[acc.id].participated;
+                    cb.addEventListener('change', () => { participantDraft[acc.id].participated = cb.checked; });
+                    const info = document.createElement('div');
+                    info.innerHTML = '<div class="p-name">' + acc.fullName + '</div><div class="p-login">' + acc.login + '</div>';
+                    head.appendChild(cb); head.appendChild(info);
+                    const picker = document.createElement('div');
+                    picker.className = 'star-picker';
+                    for (let i = 1; i <= 10; i++) {
+                        const s = document.createElement('span');
+                        s.className = 's' + (i <= participantDraft[acc.id].stars ? ' on' : '');
+                        s.textContent = '★';
+                        s.addEventListener('click', () => {
+                            participantDraft[acc.id].stars = i;
+                            picker.querySelectorAll('.s').forEach((el, idx) => el.classList.toggle('on', (idx + 1) <= i));
+                        });
+                        picker.appendChild(s);
+                    }
+                    row.appendChild(head); row.appendChild(picker); list.appendChild(row);
+                });
+            }
+
+            document.getElementById('saveParticipantsBtn').addEventListener('click', () => {
+                if (!currentLessonId) return;
+                const lessons = loadLessons();
+                const lesson = lessons.find(l => l.id === currentLessonId);
+                if (!lesson) return;
+                lesson.grades = lesson.grades || {};
+                Object.keys(participantDraft).forEach(accId => {
+                    const d = participantDraft[accId];
+                    if (d.participated) lesson.grades[accId] = { participated: true, stars: d.stars };
+                    else delete lesson.grades[accId];
+                });
+                saveLessons(lessons);
+                document.getElementById('participantsMsg').textContent = 'Сохранено.';
+                document.getElementById('participantsMsg').style.color = '#1e7a3c';
+            });
+
+            function renderFiles(lessonId) {
+                const lesson = loadLessons().find(l => l.id === lessonId);
+                const list = document.getElementById('filesList');
+                list.innerHTML = '';
+                if (!lesson || !lesson.files || !lesson.files.length) { list.innerHTML = '<p style="color:var(--text-muted); font-size:0.9rem;">Файлы пока не добавлены.</p>'; return; }
+                lesson.files.forEach(file => {
+                    const item = document.createElement('div');
+                    item.className = 'file-item';
+                    item.innerHTML = '<div><div class="f-name">' + file.name + '</div><div class="f-sub">' + (file.size || '') + '</div></div><button class="file-download">Скачать</button>';
+                    item.querySelector('button').onclick = () => alert('Заглушка');
+                    list.appendChild(item);
+                });
+            }
+
+            function renderAbout(lessonId) {
+                const lesson = loadLessons().find(l => l.id === lessonId);
+                document.getElementById('aboutTopic').textContent = lesson ? (lesson.topic || '—') : '—';
+                document.getElementById('aboutNotes').textContent = lesson ? (lesson.notes || '—') : '—';
+            }
+
+            // ---------- АНКЕТА ----------
+            let anketaState = { lessonId: null, accountId: null, score: 0 };
+            function openAnketa(lessonId, accountId) {
+                const all = loadAnkety();
+                if (all[lessonId] && all[lessonId][accountId]) {
+                    document.getElementById('anketaForm').style.display = 'none';
+                    document.getElementById('anketaSuccess').style.display = 'block';
+                    anketaState = { lessonId, accountId, score: 0 };
+                    show('anketaScreen');
+                    return;
+                }
+                anketaState = { lessonId, accountId, score: 0 };
+                document.getElementById('anketaForm').style.display = 'block';
+                document.getElementById('anketaSuccess').style.display = 'none';
+                ['q1','q2','q3','q4','q6'].forEach(id => document.getElementById(id).value = '');
+                document.getElementById('q5').value = '';
+                document.getElementById('anketaError').textContent = '';
+                renderAnketaStars();
+                show('anketaScreen');
+            }
+
+            function renderAnketaStars() {
+                const box = document.getElementById('anketaStars');
+                box.innerHTML = '';
+                for (let i = 1; i <= 10; i++) {
+                    const s = document.createElement('span');
+                    s.className = 's' + (i <= anketaState.score ? ' on' : '');
+                    s.textContent = '★';
+                    s.onclick = () => {
+                        anketaState.score = i;
+                        renderAnketaStars();
+                        document.getElementById('anketaScoreLabel').textContent = i + '/10';
+                    };
+                    box.appendChild(s);
+                }
+                document.getElementById('anketaScoreLabel').textContent = anketaState.score + '/10';
+            }
+
+            document.getElementById('saveAnketaBtn').addEventListener('click', () => {
+                const q1 = document.getElementById('q1').value.trim();
+                const q2 = document.getElementById('q2').value.trim();
+                const q3 = document.getElementById('q3').value.trim();
+                const q4 = document.getElementById('q4').value.trim();
+                const q5 = document.getElementById('q5').value;
+                const q6 = document.getElementById('q6').value.trim();
+                if (!q1 || !q2 || !q3 || !q4 || !q5 || !q6 || anketaState.score === 0) {
+                    document.getElementById('anketaError').textContent = 'Заполните все поля и поставьте оценку.';
+                    return;
+                }
+                const all = loadAnkety();
+                if (!all[anketaState.lessonId]) all[anketaState.lessonId] = {};
+                all[anketaState.lessonId][anketaState.accountId] = { q1, q2, q3, q4, q5, q6, score: anketaState.score, date: new Date().toISOString() };
+                saveAnkety(all);
+                document.getElementById('anketaForm').style.display = 'none';
+                document.getElementById('anketaSuccess').style.display = 'block';
+            });
+
+            document.getElementById('laterAnketaBtn').addEventListener('click', () => {
+                if (!confirm('Если вы выйдете сейчас, все введённые данные сбросятся. Продолжить?')) return;
+                hideAllScreens();
+                const sess = getSession();
+                if (sess) openAccountScreen(sess.id); else showPublicSite();
+            });
+
+            // ---------- ПРОСМОТР АНКЕТ ----------
+            function renderAdminAnkety() {
+                const lessons = loadLessons();
+                const select = document.getElementById('adminAnketyLessonSelect');
+                select.innerHTML = '';
+                lessons.forEach(l => select.insertAdjacentHTML('beforeend', '<option value="' + l.id + '">' + l.title + '</option>'));
+                const renderList = () => {
+                    const all = loadAnkety();
+                    const list = document.getElementById('adminAnketyList');
+                    list.innerHTML = '';
+                    const lessonAnkety = all[select.value] || {};
+                    const accs = loadAccounts();
+                    const entries = Object.keys(lessonAnkety);
+                    if (!entries.length) { list.innerHTML = '<p style="color:var(--text-muted); font-size:0.9rem;">Анкет нет.</p>'; return; }
+                    entries.forEach(accId => {
+                        const a = lessonAnkety[accId];
+                        const acc = accs.find(x => x.id === accId);
+                        const card = document.createElement('div');
+                        card.className = 'anketa-card';
+                        card.innerHTML = '<div class="anketa-card-head"><div><div class="a-name">' + (acc ? acc.fullName : '?') + '</div><div class="a-sub">Оценка: ' + a.score + '/10</div></div><span>▾</span></div><div class="anketa-card-body"><div class="qa"><b>Интересно:</b>' + escapeHtml(a.q1) + '</div><div class="qa"><b>Новое:</b>' + escapeHtml(a.q2) + '</div><div class="qa"><b>Не хватило:</b>' + escapeHtml(a.q3) + '</div><div class="qa"><b>Атмосфера:</b>' + escapeHtml(a.q4) + '</div><div class="qa"><b>Понятность:</b>' + escapeHtml(a.q5) + '</div><div class="qa"><b>Почему:</b>' + escapeHtml(a.q6) + '</div></div>';
+                        card.querySelector('.anketa-card-head').onclick = () => card.classList.toggle('open');
+                        list.appendChild(card);
+                    });
+                };
+                select.onchange = renderList;
+                renderList();
+            }
+
+            function escapeHtml(str) {
+                return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+            }
+
+            // ---------- ИМПОРТ АККАУНТОВ ----------
+            document.getElementById('createAccountOpenBtn').onclick = () => {
+                document.getElementById('importText').value = '';
+                document.getElementById('importFile').value = '';
+                document.getElementById('importResult').innerHTML = '';
+                hideAllScreens();
+                show('createAccountScreen');
+            };
+
+            function parseAccountsText(text) {
+                const result = { accounts: [], errors: [] };
+                const rawLines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+                const isTable = rawLines.some(l => l.includes('\t'));
+
+                if (isTable) {
+                    let startIdx = 0;
+                    const first = rawLines[0].split('\t').map(s => s.trim().toLowerCase());
+                    if (first.includes('имя') || first.includes('фамилия')) startIdx = 1;
+                    for (let i = startIdx; i < rawLines.length; i++) {
+                        const cells = rawLines[i].split('\t').map(s => s.trim());
+                        if (cells.length < 7) { result.errors.push('Строка ' + (i + 1) + ': мало столбцов.'); continue; }
+                        const [firstName, lastName, middleName, login, password, position, secretDigits] = cells;
+                        if (!firstName || !lastName || !login || !password) { result.errors.push('Строка ' + (i + 1) + ': пустые данные.'); continue; }
+                        
+                        // Если первая строка — Ольга (по имени или должности с тренером), делаем админом
+                        const isAdmin = (i === startIdx && (firstName === 'Ольга' || position.toLowerCase().includes('тренер'))) || position.toLowerCase().includes('тренер');
+                        
+                        result.accounts.push({
+                            id: 'acc-' + Date.now() + '-' + i,
+                            fullName: (lastName || '') + ' ' + (firstName || '') + ' ' + (middleName || ''),
+                            lastName: lastName || '', firstName: firstName || '', middleName: middleName || '',
+                            login, password, position: position || '',
+                            secretDigits: secretDigits || '',
+                            role: isAdmin ? 'admin' : 'user'
+                        });
+                    }
+                    return result;
+                }
+
+                // Старый формат с +
+                const chunks = text.split('#').map(s => s.trim()).filter(Boolean);
+                chunks.forEach((chunk, idx) => {
+                    const parts = chunk.split('+').map(s => s.trim());
+                    if (parts.length < 6) { result.errors.push('Аккаунт №' + (idx + 1) + ': мало полей.'); return; }
+                    const [firstName, lastName, middleName, login, password, position, secretDigits] = parts;
+                    result.accounts.push({
+                        id: 'acc-' + Date.now() + '-' + idx,
+                        fullName: lastName + ' ' + firstName + ' ' + middleName,
+                        lastName, firstName, middleName,
+                        login, password, position: position || '', secretDigits: secretDigits || '',
+                        role: idx === 0 ? 'admin' : 'user'
+                    });
+                });
+                return result;
+            }
+
+            document.getElementById('importFile').addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const resultBox = document.getElementById('importResult');
+                if (file.name.endsWith('.txt')) {
+                    const reader = new FileReader();
+                    reader.onload = ev => { document.getElementById('importText').value = ev.target.result; resultBox.innerHTML = '<div class="import-ok">Файл загружен.</div>'; };
+                    reader.readAsText(file, 'UTF-8');
+                } else if (file.name.endsWith('.docx')) {
+                    const reader = new FileReader();
+                    reader.onload = ev => {
+                        mammoth.extractRawText({ arrayBuffer: ev.target.result }).then(res => {
+                            document.getElementById('importText').value = res.value;
+                            resultBox.innerHTML = '<div class="import-ok">Файл .docx загружен.</div>';
+                        }).catch(err => resultBox.innerHTML = '<div class="import-err">Ошибка: ' + err.message + '</div>');
+                    };
+                    reader.readAsArrayBuffer(file);
+                }
+            });
+
+            document.getElementById('importBtn').onclick = () => {
+                const text = document.getElementById('importText').value.trim();
+                if (!text) return;
+                const parsed = parseAccountsText(text);
+                const accs = loadAccounts();
+                const existing = new Set(accs.map(a => a.login));
+                let added = 0;
+                parsed.accounts.forEach(a => { if (!existing.has(a.login)) { accs.push(a); existing.add(a.login); added++; } });
+                saveAccounts(accs);
+                document.getElementById('importResult').innerHTML = '<div class="import-ok">Добавлено: ' + added + '.</div>' + (parsed.errors.length ? '<div class="import-err">Ошибки: ' + parsed.errors.length + '</div>' : '');
+                renderAccountsList();
+            };
+
+            // ---------- ЗАГРУЗКА ИЗ STATS.DOCX ----------
+            async function loadFromStatsFile() {
+                const syncNote = document.getElementById('syncNote');
+                try {
+                    const response = await fetch(STATS_FILE, { cache: 'no-store' });
+                    if (!response.ok) throw new Error('HTTP ' + response.status);
+                    const arrayBuffer = await response.arrayBuffer();
+                    const res = await mammoth.extractRawText({ arrayBuffer });
+                    const parsed = parseAccountsText(res.value || '');
+                    
+                    if (parsed.accounts.length > 0) {
+                        const accs = loadAccounts();
+                        const existing = new Set(accs.map(a => a.login));
+                        let addedCount = 0;
+                        parsed.accounts.forEach(acc => {
+                            if (!existing.has(acc.login)) {
+                                accs.push(acc);
+                                existing.add(acc.login);
+                                addedCount++;
+                            } else {
+                                // Если аккаунт уже есть, но теперь он админ — обновляем роль
+                                const idx = accs.findIndex(a => a.login === acc.login);
+                                if (idx !== -1 && acc.role === 'admin') accs[idx].role = 'admin';
+                            }
+                        });
+                        // Сортируем, чтобы админ был первым
+                        accs.sort((a, b) => (b.role === 'admin' ? 1 : 0) - (a.role === 'admin' ? 1 : 0));
+                        saveAccounts(accs);
+                        syncNote.textContent = 'Stats.docx прочитан. Новых: ' + addedCount + '.';
+                    } else {
+                        syncNote.textContent = 'Stats.docx пуст или ошибка формата.';
+                    }
+                } catch (e) {
+                    syncNote.textContent = 'Stats.docx не найден (' + e.message + ').';
+                }
+            }
+
+            // ---------- ЗАКРЫТИЕ ЭКРАНОВ ----------
+            document.querySelectorAll('[data-close]').forEach(btn => btn.onclick = () => {
+                hideAllScreens();
+                const sess = getSession();
+                if (sess) openAccountScreen(sess.id); else showPublicSite();
+            });
+            document.querySelectorAll('[data-close-create]').forEach(btn => btn.onclick = () => { hideAllScreens(); renderAccountsList(); show('accountsListScreen'); });
+            document.querySelectorAll('[data-close-lesson]').forEach(btn => btn.onclick = () => { hideAllScreens(); renderLessonsList(); show('lessonsScreen'); });
+            document.querySelectorAll('[data-close-participants]').forEach(btn => btn.onclick = () => { hideAllScreens(); if (currentLessonId) openLessonScreen(currentLessonId); });
+            document.querySelectorAll('[data-close-files]').forEach(btn => btn.onclick = () => { hideAllScreens(); if (currentLessonId) openLessonScreen(currentLessonId); });
+            document.querySelectorAll('[data-close-about]').forEach(btn => btn.onclick = () => { hideAllScreens(); if (currentLessonId) openLessonScreen(currentLessonId); });
+            document.querySelectorAll('[data-close-anketa]').forEach(btn => btn.onclick = () => { hideAllScreens(); const sess = getSession(); if (sess) openAccountScreen(sess.id); else showPublicSite(); });
+            document.querySelectorAll('[data-close-admin-ankety]').forEach(btn => btn.onclick = () => { hideAllScreens(); const sess = getSession(); if (sess) openAccountScreen(sess.id); else showPublicSite(); });
+
+            // ---------- ИНИЦИАЛИЗАЦИЯ ----------
+            ensureSingleCurrent();
+            loadFromStatsFile().then(() => {
+                const sess = getSession();
+                if (sess) {
+                    const accs = loadAccounts();
+                    if (accs.some(a => a.id === sess.id)) { showLoggedIn(); openAccountScreen(sess.id); }
+                    else { clearSession(); showPublicSite(); }
+                } else {
+                    showPublicSite();
+                }
+            });
+        })();
     </script>
 </body>
 </html>
